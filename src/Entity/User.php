@@ -3,68 +3,40 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+#[ORM\Table(name: '`user`')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 20)]
-    private $username;
-
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $password;
-
-    #[ORM\Column(type: 'date')]
-    private $birthdate;
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Hotnew::class)]
-    private $hotnews;
+    #[ORM\Column(type: 'string')]
+    private $password;
 
-    #[ORM\ManyToMany(targetEntity: Event::class, mappedBy: 'user')]
-    private $userEvent;
+    #[ORM\Column(type: 'string', length: 40)]
+    private $firstname;
 
-    #[ORM\ManyToMany(targetEntity: Support::class, mappedBy: 'user')]
-    private $supports;
+    #[ORM\Column(type: 'string', length: 40)]
+    private $lastname;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Ad::class, orphanRemoval: true)]
-    private $ads;
-
-    public function __construct()
-    {
-        $this->hotnews = new ArrayCollection();
-        $this->userEvent = new ArrayCollection();
-        $this->supports = new ArrayCollection();
-        $this->ads = new ArrayCollection();
-    }
+    #[ORM\Column(type: 'date')]
+    private $birthdate;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
     }
 
     public function getEmail(): ?string
@@ -79,7 +51,47 @@ class User
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -87,6 +99,50 @@ class User
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
 
         return $this;
     }
@@ -99,132 +155,6 @@ class User
     public function setBirthdate(\DateTimeInterface $birthdate): self
     {
         $this->birthdate = $birthdate;
-
-        return $this;
-    }
-
-    public function getRoles(): ?array
-    {
-        return $this->roles;
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Hotnew[]
-     */
-    public function getHotnews(): Collection
-    {
-        return $this->hotnews;
-    }
-
-    public function addHotnews(Hotnew $hotnews): self
-    {
-        if (!$this->hotnews->contains($hotnews)) {
-            $this->hotnews[] = $hotnews;
-            $hotnews->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeHotnews(Hotnew $hotnews): self
-    {
-        if ($this->hotnews->removeElement($hotnews)) {
-            // set the owning side to null (unless already changed)
-            if ($hotnews->getUser() === $this) {
-                $hotnews->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Event[]
-     */
-    public function getUserEvent(): Collection
-    {
-        return $this->userEvent;
-    }
-
-    public function addUserEvent(Event $userEvent): self
-    {
-        if (!$this->userEvent->contains($userEvent)) {
-            $this->userEvent[] = $userEvent;
-            $userEvent->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUserEvent(Event $userEvent): self
-    {
-        if ($this->userEvent->removeElement($userEvent)) {
-            $userEvent->removeUser($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Support[]
-     */
-    public function getSupports(): Collection
-    {
-        return $this->supports;
-    }
-
-    public function addSupport(Support $support): self
-    {
-        if (!$this->supports->contains($support)) {
-            $this->supports[] = $support;
-            $support->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSupport(Support $support): self
-    {
-        if ($this->supports->removeElement($support)) {
-            $support->removeUser($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Ad[]
-     */
-    public function getAds(): Collection
-    {
-        return $this->ads;
-    }
-
-    public function addAd(Ad $ad): self
-    {
-        if (!$this->ads->contains($ad)) {
-            $this->ads[] = $ad;
-            $ad->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAd(Ad $ad): self
-    {
-        if ($this->ads->removeElement($ad)) {
-            // set the owning side to null (unless already changed)
-            if ($ad->getUser() === $this) {
-                $ad->setUser(null);
-            }
-        }
 
         return $this;
     }

@@ -1,0 +1,115 @@
+<?php
+
+namespace App\DataFixtures;
+
+use App\Entity\User;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+class UserFixtures extends Fixture
+{ 
+
+    const DATA = [
+        [
+            'firstname' => "John",
+            'lastname' => "DOE",
+            'username' => "Geekeur7",
+            'email' => "geekeur7@game.com",
+            'password' => "123456",
+            'roles' => ["ROLE_USER"],
+        ],
+        [
+            'firstname' => "John",
+            'lastname' => "DOE",
+            'username' => "Pikachu59",
+            'email' => "pikachu@bep.com",
+            'password' => "123456",
+            'roles' => ["ROLE_USER"],
+        ],
+        [
+            'firstname' => "John",
+            'lastname' => "DOE",
+            'username' => "Badass",
+            'email' => "badass@gmail.com",
+            'password' => "123456",
+            'roles' => ["ROLE_USER"],
+        ],
+        [
+            'firstname' => "John",
+            'lastname' => "DOE",
+            'username' => "darklight",
+            'email' => "darklight@light.com",
+            'password' => "123456",
+            'roles' => ["ROLE_USER"],
+        ],
+        [
+            'firstname' => "John",
+            'lastname' => "DOE",
+            'username' => "Queen",
+            'email' => "queen@outlook.com",
+            'password' => "123456",
+            'roles' => ["ROLE_USER"],
+        ],
+        [
+            'firstname' => "John",
+            'lastname' => "DOE",
+            'username' => "CobraX",
+            'email' => "cobra@snake.com",
+            'password' => "123456",
+            'roles' => ["ROLE_USER"],
+        ],
+        [
+            'firstname' => "John",
+            'lastname' => "DOE",
+            'username' => "ninjaboy",
+            'email' => "ninjaboy@gun.com",
+            'password' => "123456",
+            'roles' => ["ROLE_USER"],
+        ],
+    ];
+
+    /**
+     * Password encode interface
+     * 
+     * @var UserPasswordEncoderInterface
+     */
+    private $encoder;
+
+    function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+
+
+    public function load(ObjectManager $manager): void
+    {
+        foreach (self::DATA as $item)
+        {
+            $user = new User;
+
+            $hashed = $this->encoder->encodePassword($user, $item['password']);
+
+            //$user->setUsername( $item['username'] );
+            $user->setFirstname( $item['firstname'] );
+            $user->setLastname( $item['lastname'] );
+            $user->setEmail( $item['email'] );
+            $user->setPassword( $hashed );
+            $user->setRoles( $item['roles'] );
+            $user->setBirthdate( new \DateTime() );
+      
+            // setReference
+
+
+            $manager->persist($user);
+        }
+        
+
+        $manager->flush();
+    }
+
+
+    // getOrders () {
+        //return 1;
+    //}
+}
