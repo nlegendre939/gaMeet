@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdController extends AbstractController
 {
-    #[Route('/ad', name: 'ad')]
+    #[Route('/ad', name: 'ad-')]
     public function index(): Response
     {
         return $this->render('ad/index.html.twig', [
