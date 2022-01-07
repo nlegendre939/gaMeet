@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ event.name }} - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/event/show.css') }}">
+{% endblock %}
+
+{% block mainClasses %}no-spaces{% endblock %}
+
+{% block body %}
+    <article class="event">
+        <div class="event-view">
+            {% include "components/event-media.html.twig" %}
+            <h1>{{ event.name }}</h1>
+        </div>
+        <div class="event-summary">
+            <p class="event-summary__description">
+                {{ event.description }}
+            </p>
