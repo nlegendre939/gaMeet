@@ -1,6 +1,6 @@
 <?php
 
-*namespace App\Controller;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,10 +32,12 @@ class EventController extends AbstractController
                 'id' => $event->getId(),
             ]);
         }
-}
-return $this->render('event/form.html.twig', [
-    'form' => $form->createView(),
-    'isNew' => $isNew
-]);
+
+        return $this->render('event/form.html.twig', [
+            'form' => $form->createView(),
+            'isNew' => $isNew
+        ]);
+    }
+
 }
 
