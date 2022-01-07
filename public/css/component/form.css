@@ -1,0 +1,19 @@
+div{
+    margin: 10px;
+    color : #DEFFF2;
+}
+
+.button{
+    color: #000009;
+    background-color: #DEFFF2;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 3px 3px 8px 0 #000;
+}
+
+.button:hover {
+    transform: scaleX(1.02);
+}

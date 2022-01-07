@@ -13,12 +13,26 @@ class Ad
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    #[Assert\NotBlank(message:"Vous devez saisir un nom pour l'annonce")]
     #[ORM\Column(type: 'string', length: 45)]
     private $name;
 
+    #[Assert\NotBlank(message:"Vous devez saisir une description pour l'annonce")]
+    #[Assert\Length(
+        min:10,
+        max:1500,
+        minMessage:"La description doit contenir au minimum {{ limit }} caractères",
+        maxMessage:"La description doit contenir au maximum {{ limit }} caractères"
+    )]
     #[ORM\Column(type: 'text')]
     private $description;
 
+    #[Assert\Image(
+        minWidth: 200,
+        maxWidth: 400,
+        minHeight: 200,
+        maxHeight: 400,
+    )]
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $picture;
 
