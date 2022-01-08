@@ -3,6 +3,16 @@ div{
     color : #DEFFF2;
 }
 
+form input, form textarea {
+font-size: 1.2rem;
+}
+
+ form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    resize: none;
+}
+
 .button{
     color: #000009;
     background-color: #DEFFF2;
