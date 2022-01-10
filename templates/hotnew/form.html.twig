@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-une annonce - {{ parent() }}
+une actualité - {{ parent() }}
 {% endblock %}
 
 {% block stylesheets %}
@@ -14,9 +14,11 @@ une annonce - {{ parent() }}
 
         <div class="container-md">
             <div class="col-4">
-                {{ form_row(form.name) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.content) }}
                 {{ form_row(form.picture) }}
-                {{ form_row(form.description) }}
+                {{ form_row(form.create_at) }}
+                {{ form_row(form.publish_at) }}
                 {{ form_row(form.submit) }}
             </div>
     

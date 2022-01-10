@@ -3,8 +3,21 @@ div{
     color : #DEFFF2;
 }
 
+input[type="file"] {
+    cursor : pointer;
+    width: 500px;
+}
+
+.container-md {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 form input, form textarea {
 font-size: 1.2rem;
+width: 300px;
 }
 
  form textarea {

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('css/ad/show.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ad/show.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -17,9 +17,8 @@
         <div>
             <h2 class="card-title">{{ ad.name }}</h2>
             <p class="card-text">{{ ad.description }}</p>
-            <p>Ajouté par {{ ad.user.email }}</p>
+            <p>Ajouté par {{ ad.user.firstname }}</p>
         </div>
     </article>
 </div>
 {% endblock %}
-

@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-    <p class="text-center text-">
+    <p class="text-center">
        Toi aussi rejoins les meilleurs joueurs pour former la meilleure équipe !
     <br><span class="text-space"></span>
        Tu trouveras facilement le nom de la team et joueurs que tu cherches.
@@ -23,7 +23,7 @@
                 <div>
                     <h2 class="card-title">{{ ad.name }}</h2>
                     <p class="card-text">{{ ad.description|slice(0, 80) }} ...</p>
-                    <p>Ajouté par {{ ad.user.email }}</p>
+                    <p>Ajouté par {{ ad.user.firstname }}</p>
                 </div>
             </article>
             <div>
