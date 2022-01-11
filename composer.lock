@@ -4,7 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "12b4a2d1eacf9c6627acf7a68a29837a",
+=======
+<<<<<<< HEAD
+    "content-hash": "1127a304fe304e03a3aa1cbeb53e1878",
+=======
+    "content-hash": "12b4a2d1eacf9c6627acf7a68a29837a",
+>>>>>>> 12dd6500d2a8b0843f81e8c7a23250730747b27c
+>>>>>>> asma
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
