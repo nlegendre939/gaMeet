@@ -1,3 +1,14 @@
+h1{
+    text-align: center;
+
+}
+.form-row{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
 div{
     margin: 10px;
     color : #DEFFF2;
@@ -9,7 +20,8 @@ div{
     text-decoration: none;
     padding: 10px 20px;
     font-size: 1.2rem;
-    border: none;
+    border: 3px;
+    border-color: defff2;
     font-family: 'Roboto', sans-serif;
     box-shadow: 3px 3px 8px 0 #000;
 }
