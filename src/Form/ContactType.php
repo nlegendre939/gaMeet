@@ -15,7 +15,7 @@ class ContactType extends AbstractType
     {
         $builder
         ->add('name', TextType::class, [
-            'label' => 'Nom  pseudo de la personne',
+            'label' => 'Nom du joueur/pseudo',
         ])
 
         ->add('email', TextType::class, [
@@ -25,11 +25,11 @@ class ContactType extends AbstractType
 
 
         ->add('question', TextType::class, [
-            'label' => 'question information demandé',
+            'label' => 'information demandé',
         ])
 
         ->add('message', TextAreaType::class, [
-            'label' => 'message de la personne',
+            'label' => 'message',
         ])
         ->add('submit', SubmitType::class, [
             'label' => 'Envoyer',
