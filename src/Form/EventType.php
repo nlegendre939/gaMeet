@@ -12,12 +12,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-//use App\Form\EventType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
-
-
-
 
 class EventType extends AbstractType
 {
@@ -46,25 +40,18 @@ class EventType extends AbstractType
                     new NotBlank()
                 ]
             ])
-            ->add('startAt', null, [
+            ->add('start_at', DateTimeType::class, [
                 'label' => 'Date de début',
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text',
-                'attr' => [
-                    'class' => 'datetime-widget',
-                ]
             ])
-            ->add('endAt', null, [
+            ->add('end_at', DateTimeType::class, [
                 'label' => 'Date de fin',
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text',
-                'attr' => [
-                    'class' => 'datetime-widget',
-                ]
             ])
             // ->add('team')
             // ->add('user')
-
 
             ->add('submit', SubmitType::class, [
                 'label' => 'Enregistrer',
