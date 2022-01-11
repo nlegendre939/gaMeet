@@ -1,4 +1,37 @@
 body {
+    background-color: rgb(0, 0, 0);
+   
+}
+img{
+    width:100%;
+    max-width:2000px;
+    position: relative;
+    align-items: center;
+}
+.containerbtn{
+    position: absolute;
+    top: 75%;
+    left: 45%;
+    border: none;
+}
+.navbar{
+    position: relative;
+    align-items: center;
+    left: 17%;
+}
+.btn{
+    color: white;
+}
+.nav-link{
+    color: rgb(56, 212, 197);
+}
+.navbar-brand{ 
+    color: rgb(182, 101, 182);
+} 
+body img{ 
+    align-items: center;
+}
+body {
     background-color: #000009;
     font-size: 16px;
 }
