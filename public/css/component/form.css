@@ -1,5 +1,6 @@
 h1{
-    text-align: center;
+    text-align:center;
+    color: #DEFFF2;
 
 }
 .form-row{
@@ -11,7 +12,7 @@ h1{
 
 div{
     margin: 10px;
-    color : #DEFFF2;
+    color : ;
 }
 
 .button{
