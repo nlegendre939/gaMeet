@@ -3,8 +3,11 @@ div{
     color : #DEFFF2;
 }
 
-input[type="file"] {
+input[type="file"], input[type=date] {
     cursor : pointer;
+}
+
+input[type="file"] {
     width: 500px;
 }
 

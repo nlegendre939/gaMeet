@@ -47,18 +47,12 @@ class HotnewType extends AbstractType
                 ]
             ])
             ->add('create_at', DateTimeType::class, [
-                'date_label' => 'Créé le :',
+                'label' => 'Créé le :',
                 'date_widget' => 'single_text',
-                'attr' => [
-                    'class' => 'datetime-widget',
-                ]
             ])
             ->add('publish_at', DateTimeType::class, [
-                'date_label' => 'Publié le :',
+                'label' => 'Publié le :',
                 'date_widget' => 'single_text',
-                'attr' => [
-                    'class' => 'datetime-widget',
-                ]
             ])
             // ->add('datetime')
             // ->add('edit_at')
@@ -79,6 +73,9 @@ class HotnewType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Hotnew::class,
+            'attr' => [
+                'novalidate' => 'novalidate'
+            ]
         ]);
     }
 }

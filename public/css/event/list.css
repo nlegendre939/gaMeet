@@ -1,0 +1,37 @@
+h1, p, .card, a {
+    color: #DEFFF2;
+}
+
+.border {
+    width: 100vh;
+    margin-left: 200px;
+}
+
+.card {
+    background-color: #000009;
+}
+
+hr {
+    color: #D68FD6;
+    border: 1px solid #D68FD6;
+    opacity: 1;
+}
+
+.card-text {
+    margin-bottom: 10px;
+    width: 400px;
+}
+
+p {
+    margin: 0;
+}
+
+.text-space {
+    padding-top: 20px;
+    display: block;
+}
+
+a:hover {
+    color: #0FF4C6;
+    transform: scaleX(1.02);
+}

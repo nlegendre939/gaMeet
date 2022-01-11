@@ -18,7 +18,7 @@
         {% for ad in ads %}
             <article class="card-body">
                 <div>
-                    <img class="card-img-top" src="{{ ad.picture }}" alt="{{ ad.name }}">
+                    <img class="card-img-top" src="{{ asset('data/' ~ ad.picture) }}" alt="{{ ad.name }}">
                 </div>
                 <div>
                     <h2 class="card-title">{{ ad.name }}</h2>
