@@ -15,5 +15,8 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> b0ccb068cb1dc0bc07c7138dc906e077ea67808f
 }
