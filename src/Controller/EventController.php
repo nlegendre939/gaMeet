@@ -46,6 +46,7 @@ class EventController extends AbstractController
     }
 
     #[Route('/new',name: 'new')]
+    //[Route('/event', name: 'event_')]
     public function form(Request $request): Response
     {
         $event = new Event();
