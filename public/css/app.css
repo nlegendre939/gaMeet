@@ -69,3 +69,13 @@ body {
 .notification.n-notice{
     background-color: #27ae60;
 }
+<!-- footer--> 
+
+.row {
+    position: relative;
+    left: 5%;
+    justify-content: space-between;
+}
+footer{
+    color: rgb(56, 212, 197);
+}
