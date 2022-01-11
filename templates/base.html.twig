@@ -16,15 +16,17 @@
 
         <script src="{{ asset('js/app.js') }}" defer></script>
         {% block stylesheets %}{% endblock %}
-
+       
     </head>
     <body>
         {% include "components/header.html.twig" %}
-
+      
         <main class="{% block mainClasses %}{% endblock %}">
             {% block body %}{% endblock %}
         </main>
-
+       
         {% include "components/footer.html.twig" %}
+        {% include "components/notification.html.twig" %} 
     </body>
+   
 </html>
