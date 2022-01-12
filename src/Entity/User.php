@@ -47,6 +47,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $activation_token;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $nickname;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -192,6 +195,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setActivationToken(?string $activation_token): self
     {
         $this->activation_token = $activation_token;
+
+        return $this;
+    }
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(string $nickname): self
+    {
+        $this->nickname = $nickname;
 
         return $this;
     }
