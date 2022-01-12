@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche un joueur- {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/components/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user/list.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+
+
+
+    <h1>Rechercher un joueur</h1>
+
+   
+    {{ form_start(searchForm) }}
+     {{ form_row(searchForm.name) }}
+     {{ form_row(searchForm.pseudo) }}
+     {{ form_row(searchForm.jeu) }}
+     {{ form_row(searchForm.support) }}
+     {{ form_row(searchForm.rechercher) }}
+  
+    {{ form_end(searchForm) }}
+
+    
+
+{% endblock %}

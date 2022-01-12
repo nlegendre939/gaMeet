@@ -2,17 +2,29 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\SearchUserType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
 {
     #[Route('/user', name: 'user')]
-    public function index(): Response
+    public function list(): Response
     {
-        return $this->render('user/index.html.twig', [
+        $searchForm = $this->createForm(SearchUserType::class);
+
+        return $this->render('user/list.html.twig', [
             'controller_name' => 'UserController',
+            'searchForm'=>$searchForm->createView(),
         ]);
     }
+
+ 
+
+
+
+
+
+
 }
