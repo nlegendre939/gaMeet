@@ -87,7 +87,7 @@ class RegistrationController extends AbstractController
         //On supprime le token s'il existe
         $user->setActivationToken(null);
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persit($user);
+        $entityManager->persist($user);
         $entityManager->flush();
 
         //Message flash
@@ -96,6 +96,6 @@ class RegistrationController extends AbstractController
 
         //retour à l'accueil
 
-        return $this->redirection('accueil');
+        return $this->redirectToRoute('main_index');
     }
 }
