@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -38,7 +39,6 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-
 
             // do anything else you need here, like send an email
             //On crée notre message
@@ -72,9 +72,8 @@ class RegistrationController extends AbstractController
 
         //creation de la methode pour verifier l'email
 
-    /**
-     * @Route("/activation/{token}", name="activation")
-     */
+    
+    #[Route('/activation/{token}', name:'activation')]
     public function activation($token, UserRepository $userRepo){
         //on verifie si un utilisateur a ce token
         $user = $userRepo->findOneBy(['activation_token'=> $token]);
