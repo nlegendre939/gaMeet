@@ -5,6 +5,7 @@ namespace App\Controller;
 use app\Entity\User;
 use App\Entity\Event;
 use App\Form\EventType;
+use App\Form\SearchEventType;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,10 +29,15 @@ class EventController extends AbstractController
     #[Route('', name: 'list')]
     public function list(Request $request): Response
     {
-        $events = $this->eventRepository->findAll();
+        $searchForm = $this->createForm(SearchEventType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $events = $this->eventRepository->search($searchCriteria);
 
         return $this->render('event/list.html.twig', [
             'events' => $events,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 
@@ -46,18 +52,26 @@ class EventController extends AbstractController
     }
 
     #[Route('/new',name: 'new')]
-    //[Route('/event', name: 'event_')]
-    public function form(Request $request): Response
+    public function form(Request $request, Event $event = null): Response
     {
-        $event = new Event();
+        if($event){
+            $isNew = false;
+        }else{
+            $event = new Event();
+            $event->addUser($this->getUser());
+            $isNew = true;
+        }
+
+        // $event = new Event();
         $form = $this->createForm(EventType::class, $event);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $user = $this->em->getRepository(User::class)->find(1);
-            $event->addUser($user);
+            // TODO - Remplacer par l'utilisateur connecté
+            // $user = $this->em->getRepository(User::class)->find(1);
+            // $event->addUser($user);
 
             $this->em->persist($event);
             $this->em->flush();

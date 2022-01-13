@@ -47,19 +47,17 @@ class HotnewController extends AbstractController
     }
 
     #[Route('/new', name: 'new')]
-    // #[Route('/{id}/edit', name: 'edit', requirements: ['id' => '\d+'])]
-    // #[IsGranted('AD_FORM', subject: 'ad')]
-    public function form(Request $request, /* Ad $hotnew = null */): Response
+    public function form(Request $request, Ad $hotnew = null): Response
     {
-        // if($ad){
-        //     $isNew = false;
-        // }else{
-        //     $hotnew = new Hotnew();
-        //     $hotnew->setUser($this->getUser());
-        //     $isNew = true;
-        // }
+        if($hotnew){
+            $isNew = false;
+        }else{
+            $hotnew = new Hotnew();
+            $hotnew->setUser($this->getUser());
+            $isNew = true;
+        }
 
-        $hotnew = new Hotnew();
+        // $hotnew = new Hotnew();
         $form = $this->createForm(HotnewType::class, $hotnew);
 
         $form->handleRequest($request);
@@ -67,8 +65,8 @@ class HotnewController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) 
         {
             // TODO - Remplacer par l'utilisateur connecté
-            $user = $this->em->getRepository(User::class)->find(1);
-            $hotnew->setUser($user);
+            // $user = $this->em->getRepository(User::class)->find(1);
+            // $hotnew->setUser($user);
 
             $this->em->persist($hotnew);
             $this->em->flush();

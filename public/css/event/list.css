@@ -2,9 +2,13 @@ h1, p, .card, a {
     color: #DEFFF2;
 }
 
+input[type="search"] {
+    width: 300px;
+    
+}
+
 .border {
     width: 100vh;
-    margin-left: 200px;
 }
 
 .card {
@@ -34,4 +38,27 @@ p {
 a:hover {
     color: #0FF4C6;
     transform: scaleX(1.02);
+}
+
+.card .card-body{
+    position: relative;
+}
+
+.card .card-body .event-status{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.event-status.red{
+    background-color: #c0392b;
+}
+.event-status.blue{
+    background-color: #3498db;
+}
+.event-status.green{
+    background-color: #27ae60;
 }

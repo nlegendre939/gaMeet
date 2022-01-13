@@ -1,18 +1,6 @@
-h1{
-    text-align:center;
-    color: #DEFFF2;
-
-}
-.form-row{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
 div{
     margin: 10px;
-    color : ;
+    color : #DEFFF2;
 }
 
 input[type="file"], input[type=date] {
@@ -47,10 +35,7 @@ width: 300px;
     text-decoration: none;
     padding: 10px 20px;
     font-size: 1.2rem;
-    border: 3px;
-    border-color: defff2;
-    font-family: 'Roboto', sans-serif;
-    box-shadow: 3px 3px 8px 0 #000;
+    border: none;
 }
 
 .button:hover {

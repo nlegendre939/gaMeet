@@ -11,7 +11,6 @@ class SecurityController extends AbstractController
 {
     
     #[Route("/login", name:"login_")]
-
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
@@ -29,7 +28,6 @@ class SecurityController extends AbstractController
     }
 
     #[Route("/logout", name:"logout")]
-
     public function logout(){
         return $this->render('main/index.html.twig');
     }
