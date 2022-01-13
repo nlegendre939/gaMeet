@@ -12,10 +12,16 @@
 <div class="card container-md">
     <article class="card-body">
         <div>
-            <img class="card-img-top" src="{{ ad.picture }}" alt="{{ ad.name }}">
+            {% if ad.picture == null %}
+                {{ "" }}
+            {% else %}
+                <img class="card-img-top" src="{{ ad.picture }}" alt="{{ ad.name }}">
+            {% endif %}
         </div>
+
         <div>
             <h2 class="card-title">{{ ad.name }}</h2>
+            
             <p class="card-text">{{ ad.description }}</p>
             <p>Ajouté par {{ ad.user.nickname }}</p>
         </div>

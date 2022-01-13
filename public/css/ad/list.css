@@ -1,6 +1,16 @@
-p, .card, a {
+h1, p, .card, a {
     color: #DEFFF2;
 }
+
+input[type="search"] {
+    width: 300px;
+}
+
+.border {
+    width: 100vh;
+    border: 1px solid #D68FD6!important;
+}
+
 .card {
     background-color: #000009;
 }

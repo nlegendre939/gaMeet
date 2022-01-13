@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Ad;
 use App\Entity\User;
 use App\Form\AdType;
+use App\Form\SearchAdType;
 use App\Repository\AdRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,10 +30,15 @@ class AdController extends AbstractController
     #[Route('', name: 'list')]
     public function list(Request $request): Response
     {
-        $ads = $this->adRepository->findAll();
+        $searchForm = $this->createForm(SearchAdType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $ads = $this->adRepository->search($searchCriteria);
 
         return $this->render('ad/list.html.twig', [
             'ads' => $ads,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 
