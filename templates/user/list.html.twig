@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche un joueur- {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/components/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user/list.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+
+
+
+    <h1>Rechercher un joueur</h1><br>
+
+
+        <p></p>Recherche un joueur par son pseudo, ou filtre par le jeu et le support.<br>
+        
+        Accède à son Profil Joueur et voir ce qu'il a publié.<br>
+        Pour entrer en contact avec lui ou elle, tu dois au préalable t'inscrire 
+        ou te connecter sur Gameet.
+        
+    
+    </p>
+
+    {{ form_start(searchForm) }}
+    <div class="row d-flex justify-content-left">
+        <div class="col-2">
+          
+     {{ form_end(searchForm) }}
+ 
+    Listes des derniers joueurs inscrits
+
+    <img src="images/images.jpg" alt ="pikachuu88"><br>
+
+    <img src="images/image.badass.jpg" alt ="Queenn26"><br>
+
+    <img src="images/image.badass.jpg" alt ="Ninjaboy.**"><br>
+
+
+  
+
+
+
+{% endblock %}

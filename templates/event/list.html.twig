@@ -8,6 +8,39 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Les événements</h1>
+<div class="border container-md">
+    <h1>
+        Les événements
+    </h1>
+        <p>
+            Liste des événements disponibles postés sur GAMEET par les membres :
+            <br>
+            Filtre avec les barres au-dessus.
+        <br><span class="text-space"></span>
+            Tu peux créer un événement et rencontrer d'autres GAMEET.
+            <br>
+            Pour créer un événement, il faut d'abord te connecter ou t'inscrire sur GAMEET
+        </p>
+        
+        <div class="card container-md">
+            <hr>
+            {% for event in events %}
+                <article class="card-body">
+                    <div>
+                        <img class="card-img-top" src="{{ event.picture }}" alt="{{ event.name }}">
+                    </div>
+                    <div>
+                        <h2 class="card-title">{{ event.name }}</h2>
+                        <p>Commence le : {{ event.startAt|date('d/m/Y à h\\hi') }}</p>
+                        <p class="card-text">{{ event.description|slice(0, 80) }} ...</p>
+                        <p>Fini le : {{ event.endAt|date('d/m/Y à h\\hi') }}</p>
+                    </div>
+                </article>
+                <div>
+                    <a href="{{ path('event_show', {id: event.id}) }}">En savoir plus</a>
+                </div>
+                {% endfor %}
+        </div>
+</div>
 
 {% endblock %}

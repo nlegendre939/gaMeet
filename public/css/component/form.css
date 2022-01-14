@@ -29,6 +29,32 @@ width: 300px;
     resize: none;
 }
 
+input[type="file"], input[type=date] {
+    cursor : pointer;
+}
+
+input[type="file"] {
+    width: 500px;
+}
+
+.container-md {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+form input, form textarea {
+font-size: 1.2rem;
+width: 300px;
+}
+
+ form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    resize: none;
+}
+
 .button{
     color: #000009;
     background-color: #DEFFF2;
