@@ -3,20 +3,59 @@ body {
     font-size: 16px;
 }
 
-::selection {
+:selection {
     color: #D68FD6;
 }
 
-h1 {
-      text-align:left;
-    color:#defff2;
+/* header */
+header .text-center{
+    position: relative;
 }
 
-footer{
-    text-align: left;
-    color:#0ff4c6;
-        padding: 10px;
-    }
+.containerbtn{
+    position: absolute;
+    top: 400px;
+    right: 0;
+    bottom: 0;
+    left: 550px;
+    display: flex;
+    border: none;
+}
+
+.btn a{
+    color: #defff2;
+    text-decoration: none;
+}
+
+.btn a:hover{
+    color: #D68FD6;
+}
+
+.navbar{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-link{
+    color: #0FF4C6;
+}
+
+.nav-link:hover{
+    color: #D68FD6;
+}
+
+.navbar-brand{ 
+    color: #0ff4c6;
+}
+
+.navbar-brand:hover{ 
+    color: #D68FD6;
+} 
+
+h1, h2 {
+    color:#0FF4C6;
+}
     
 .notification-manager{
     position: fixed;
@@ -58,4 +97,20 @@ footer{
 
 .notification.n-error{
     background-color: #c0392b;
+}
+
+/* footer */
+
+.row {
+    position: relative;
+    left: 5%;
+    justify-content: space-between;
+}
+
+footer, .text-green{
+    color: #0ff4c6;
+}
+
+.text-green:hover{
+    color: #D68FD6;
 }
