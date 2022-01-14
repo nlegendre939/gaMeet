@@ -7,22 +7,27 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Nos annonces</h1>
-
-    <div class="ads">
+    <p class="text-center">
+       Toi aussi rejoins les meilleurs joueurs pour former la meilleure équipe !
+    <br><span class="text-space"></span>
+       Tu trouveras facilement le nom de la team et joueurs que tu cherches.
+    </p>
+    
+    <div class="card container-md">
+        <hr>
         {% for ad in ads %}
-            <article class="ad">
-                <div class="ad-picture">
-                    <img src="{{ ad.picture }}" alt="{{ ad.name }}">
+            <article class="card-body">
+                <div>
+                    <img class="card-img-top" src="{{ asset('data/' ~ ad.picture) }}" alt="{{ ad.name }}">
                 </div>
-                <div class="ad-summary">
-                    <h2>{{ ad.name }}</h2>
-                    <p>{{ ad.description|slice(0, 80) }} ...</p>
-                    <p>Ajouter {{ ad.user.email }}</p>
+                <div>
+                    <h2 class="card-title">{{ ad.name }}</h2>
+                    <p class="card-text">{{ ad.description|slice(0, 80) }} ...</p>
+                    <p>Ajouté par {{ ad.user.firstname }}</p>
                 </div>
             </article>
-            <div class="ad-action">
-                <a href="{{ path('ad_show', {id: ad.id}) }}" class="button">En savoir plus</a>
+            <div>
+                <a href="{{ path('ad_show', {id: ad.id}) }}">En savoir plus</a>
             </div>
             {% endfor %}
     </div>

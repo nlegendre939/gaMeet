@@ -15,16 +15,20 @@
 
     <h1>Rechercher un joueur</h1>
 
-   
+
     {{ form_start(searchForm) }}
-     {{ form_row(searchForm.name) }}
-     {{ form_row(searchForm.pseudo) }}
-     {{ form_row(searchForm.jeu) }}
-     {{ form_row(searchForm.support) }}
-     {{ form_row(searchForm.rechercher) }}
+    <div class="row d-flex justify-content-center">
+        <div class="col-2">
+          
+    
+            <div class="col-2">
+        {{ form_row(searchForm.pseudo) }}
+    <div class="row"></div>
+    {{ form_row(searchForm.jeu) }}
+    {{ form_row(searchForm.support) }}<br>
+
   
     {{ form_end(searchForm) }}
 
     
-
 {% endblock %}

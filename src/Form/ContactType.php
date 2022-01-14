@@ -25,7 +25,7 @@ class ContactType extends AbstractType
 
 
         ->add('question', TextType::class, [
-            'label' => 'information demandé',
+            'label' => 'Demande',
         ])
 
         ->add('message', TextAreaType::class, [

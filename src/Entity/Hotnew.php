@@ -16,7 +16,7 @@ class Hotnew
     #[ORM\Column(type: 'string', length: 250)]
     private $title;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $slug;
 
     #[ORM\Column(type: 'text')]
@@ -28,7 +28,7 @@ class Hotnew
     #[ORM\Column(type: 'datetime')]
     private $publishAt;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private $datetime;
 
     #[ORM\Column(type: 'datetime', nullable: true)]

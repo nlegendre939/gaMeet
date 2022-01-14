@@ -6,15 +6,20 @@
     <link rel="stylesheet" href="{{ asset('css/event/show.css') }}">
 {% endblock %}
 
-{% block mainClasses %}no-spaces{% endblock %}
-
 {% block body %}
-    <article class="event">
-        <div class="event-view">
-            {% include "components/event-media.html.twig" %}
-            <h1>{{ event.name }}</h1>
-        </div>
-        <div class="event-summary">
-            <p class="event-summary__description">
-                {{ event.description }}
-            </p>
+
+    <div class="card container-md">
+        <article class="card-body">
+            <div>
+                <img class="card-img-top" src="{{ event.picture }}" alt="{{ event.name }}">
+            </div>
+            <div>
+                <h2 class="card-title">{{ event.name }}</h2>
+                <p>Commence le : {{ event.startAt|date('d/m/Y à h\\hi') }}</p>
+                <p class="card-text">{{ event.description }}</p>
+                <p>Fini le : {{ event.endAt|date('d/m/Y à h\\hi') }}</p>
+            </div>
+        </article>
+    </div>
+
+{% endblock %}

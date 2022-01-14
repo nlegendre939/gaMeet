@@ -8,65 +8,39 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Nos événements</h1>
-    
-    {{ form_start(searchForm) }}
-    <div class="form-row">
-        {{ form_row(searchForm.query) }}
-        {{ form_row(searchForm.category) }}
-    </div>
-    <div class="form-row">
-        {{ form_row(searchForm.free) }}
-        {{ form_row(searchForm.submit) }}
-    </div>
-    {{ form_end(searchForm) }}
-
-    <div class="events">
-        {% for event in events %}
-            <article class="event">
-                <div class="event-picture">
-                    {% if event.endAt < date() %}
-                        {% set statusText = 'Passé' %}
-                        {% set statusColor = 'red' %}
-                    {% elseif event.startAt < date() %}
-                        {% set statusText = 'En cours' %}
-                        {% set statusColor = 'blue' %}
-                    {% else %}
-                        {% set statusText = 'A venir' %}
-                        {% set statusColor = 'green' %}
-                    {% endif %}
-                    <span class="event-status {{ statusColor }}">
-                        {{ statusText }}
-                    </span>
-                    {% include "components/event-media.html.twig" %}
-                </div>
-                <div class="event-summary">
-                    <h2>{{ event.name }}</h2>
-                    <p>{{ event.description|slice(0, 80) }} ...</p>
-                    <aside>
-                        <ul>
-                            <li>
-                                <i class="fas fa-{{ event.category.icon }}"></i>
-                                {{ event.category.name }}
-                            </li>
-                            <li>
-                                <i class="fas fa-map-marker-alt"></i>
-                                {{ event.place ? event.place.name : 'A distance' }}
-                            </li>
-                            <li>
-                                <i class="fas fa-calendar-alt"></i>
-                                {{ event.startAt|date('d/m/Y H:i') }}
-                            </li>
-                        </ul>
-                    </aside>
-                    <div class="event-action">
-                        <a href="{{ path('event_show', {id: event.id}) }}" class="button">En savoir plus</a>
+<div class="border container-md">
+    <h1>
+        Les événements
+    </h1>
+        <p>
+            Liste des événements disponibles postés sur GAMEET par les membres :
+            <br>
+            Filtre avec les barres au-dessus.
+        <br><span class="text-space"></span>
+            Tu peux créer un événement et rencontrer d'autres GAMEET.
+            <br>
+            Pour créer un événement, il faut d'abord te connecter ou t'inscrire sur GAMEET
+        </p>
+        
+        <div class="card container-md">
+            <hr>
+            {% for event in events %}
+                <article class="card-body">
+                    <div>
+                        <img class="card-img-top" src="{{ event.picture }}" alt="{{ event.name }}">
                     </div>
+                    <div>
+                        <h2 class="card-title">{{ event.name }}</h2>
+                        <p>Commence le : {{ event.startAt|date('d/m/Y à h\\hi') }}</p>
+                        <p class="card-text">{{ event.description|slice(0, 80) }} ...</p>
+                        <p>Fini le : {{ event.endAt|date('d/m/Y à h\\hi') }}</p>
+                    </div>
+                </article>
+                <div>
+                    <a href="{{ path('event_show', {id: event.id}) }}">En savoir plus</a>
                 </div>
-            </article>
-        {% else %}
-            <p>Aucun résultat disponible</p>    
-        {% endfor %}
-    </div>
+                {% endfor %}
+        </div>
+</div>
 
 {% endblock %}

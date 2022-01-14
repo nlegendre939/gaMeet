@@ -17,6 +17,13 @@ class SearchUserType extends AbstractType
             ->add('pseudo', SearchType::class)
             ->add('jeu', SearchType::class)
             ->add('support', SearchType::class)
-            ->add('rechercher', SearchType::class);
+            
+            ->add('submit', SubmitType::class, [
+                'label' => 'Envoyer',
+                'attr' => [
+                    'class' => 'button',
+                ]
+            ])
+            ;
     }
 }
