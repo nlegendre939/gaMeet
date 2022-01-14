@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,17 +14,21 @@ class SearchUserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name',SearchType::class)
-            ->add('pseudo', SearchType::class)
-            ->add('jeu', SearchType::class)
-            ->add('support', SearchType::class)
+        ->add('query', SearchType::class, [
+            'label' => false,
+            'attr' => [
+                'placeholder' => 'Rechercher un joueur',
+            ],
+        ])
+            
             
             ->add('submit', SubmitType::class, [
-                'label' => 'Envoyer',
+                'label' => '<i class="fas fa-search"></i>',
+                'label_html' => true,
                 'attr' => [
                     'class' => 'button',
                 ]
             ])
-            ;
-    }
+        ;
+                }
 }

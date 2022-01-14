@@ -13,22 +13,35 @@
 
 
 
-    <h1>Rechercher un joueur</h1>
+    <h1>Rechercher un joueur</h1><br>
 
+
+        <p></p>Recherche un joueur par son pseudo, ou filtre par le jeu et le support.<br>
+        
+        Accède à son Profil Joueur et voir ce qu'il a publié.<br>
+        Pour entrer en contact avec lui ou elle, tu dois au préalable t'inscrire 
+        ou te connecter sur Gameet.
+        
+    
+    </p>
 
     {{ form_start(searchForm) }}
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-left">
         <div class="col-2">
           
-    
-            <div class="col-2">
-        {{ form_row(searchForm.pseudo) }}
-    <div class="row"></div>
-    {{ form_row(searchForm.jeu) }}
-    {{ form_row(searchForm.support) }}<br>
+     {{ form_end(searchForm) }}
+ 
+    Listes des derniers joueurs inscrits
+
+    <img src="images/images.jpg" alt ="pikachuu88"><br>
+
+    <img src="images/image.badass.jpg" alt ="Queenn26"><br>
+
+    <img src="images/image.badass.jpg" alt ="Ninjaboy.**"><br>
+
 
   
-    {{ form_end(searchForm) }}
 
-    
+
+
 {% endblock %}
