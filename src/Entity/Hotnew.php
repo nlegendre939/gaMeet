@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\HotnewRepository;
+use App\Entity\User;
+use App\Entity\Hotnew;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\HotnewRepository;
 
 #[ORM\Entity(repositoryClass: HotnewRepository::class)]
 class Hotnew
@@ -25,11 +28,11 @@ class Hotnew
     #[ORM\Column(type: 'datetime')]
     private $createAt;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private $publishAt;
 
-    #[ORM\Column(type: 'boolean')]
-    private $datetime;
+    // #[ORM\Column(type: 'boolean')]
+    // private $datetime;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $editAt;
@@ -99,24 +102,24 @@ class Hotnew
         return $this->publishAt;
     }
 
-    public function setPublishAt(\DateTimeInterface $publishAt): self
+    public function setPublishAt( ?\DateTimeInterface $publishAt): self
     {
         $this->publishAt = $publishAt;
 
         return $this;
     }
 
-    public function getDatetime(): ?bool
-    {
-        return $this->datetime;
-    }
+    // public function getDatetime(): ?bool
+    // {
+    //     return $this->datetime;
+    // }
 
-    public function setDatetime(bool $datetime): self
-    {
-        $this->datetime = $datetime;
+    // public function setDatetime(bool $datetime): self
+    // {
+    //     $this->datetime = $datetime;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getEditAt(): ?\DateTimeInterface
     {

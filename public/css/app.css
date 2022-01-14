@@ -1,40 +1,52 @@
 body {
-    background-color: rgb(0, 0, 0);
-}
-img{
-    width:100%;
-    max-width:2000px;
-    position: relative;
-    align-items: center;
-}
-.containerbtn{
-    position: absolute;
-    top: 75%;
-    left: 45%;
-    border: none;
-}
-.navbar{
-    position: relative;
-    align-items: center;
-    left: 17%;
-}
-.btn{
-    color: white;
-}
-.nav-link{
-    color: rgb(56, 212, 197);
-}
-.navbar-brand{ 
-    color: rgb(182, 101, 182);
-} 
-body img{ 
-    align-items: center;
-}
-body {
     background-color: #000009;
     font-size: 16px;
 }
 
+:selection {
+    color: #D68FD6;
+}
+
+/* header */
+img.gaMeet{
+    width:100%;
+    position: relative;
+    align-items: center;
+}
+
+.containerbtn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    border: none;
+}
+
+.navbar{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn a{
+    color: #defff2;
+    text-decoration: none;
+}
+
+.nav-link{
+    color: #0FF4C6;
+}
+
+.navbar-brand{ 
+    color: #D68FD6;
+} 
+
+h1, h2 {
+    color:#0FF4C6;
+}
+    
 .notification-manager{
     position: fixed;
     top: 10px;
@@ -68,14 +80,23 @@ body {
 .notification.n-notice{
     background-color: #27ae60;
 }
-<!-- footer--> 
+
+.notification.n-info{
+    background-color: #2980b9;
+}
+
+.notification.n-error{
+    background-color: #c0392b;
+}
+
+/* footer */
 
 .row {
     position: relative;
     left: 5%;
     justify-content: space-between;
 }
+
 footer{
-    background-color: black;
-    color: rgb(56, 212, 197);
+    color: #0ff4c6;
 }
