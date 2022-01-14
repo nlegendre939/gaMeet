@@ -25,7 +25,7 @@ class Event
     private $description;
 
     #[ORM\Column(type: 'datetime')]
-    private $start_at;
+    private $startAt;
 
     #[ORM\Column(type: 'datetime')]
     private $endAt;
@@ -84,12 +84,12 @@ class Event
 
     public function getStartAt(): ?\DateTimeInterface
     {
-        return $this->start_at;
+        return $this->startAt;
     }
 
-    public function setStartAt(\DateTimeInterface $start_at): self
+    public function setStartAt(\DateTimeInterface $startAt): self
     {
-        $this->start_at = $start_at;
+        $this->startAt = $startAt;
 
         return $this;
     }
