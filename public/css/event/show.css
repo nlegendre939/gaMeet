@@ -4,8 +4,6 @@ p, .card, a {
 
 .card {
     background-color: #000009;
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
 

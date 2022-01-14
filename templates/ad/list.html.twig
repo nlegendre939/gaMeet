@@ -7,28 +7,46 @@
 {% endblock %}
 
 {% block body %}
-    <p class="text-center">
-       Toi aussi rejoins les meilleurs joueurs pour former la meilleure équipe !
-    <br><span class="text-space"></span>
-       Tu trouveras facilement le nom de la team et joueurs que tu cherches.
-    </p>
-    
-    <div class="card container-md">
-        <hr>
-        {% for ad in ads %}
-            <article class="card-body">
+    <div class="border container-md">
+        <h1>
+            Les annonces
+        </h1>
+
+        {{ form_start(searchForm) }}
+
+            {{ form_row(searchForm.query) }}
+            {{ form_row(searchForm.submit) }}
+
+        {{ form_end(searchForm) }}
+        <br>
+        <p>
+            Toi aussi rejoins les meilleurs joueurs pour former la meilleure équipe !
+            <br><span class="text-space"></span>
+            Tu trouveras facilement le nom de la team et joueurs que tu cherches.
+        </p>
+        
+        <div class="card container-md">
+            <hr>
+            {% for ad in ads %}
+                <article class="card-body">
+                    <div>
+                        {% if ad.picture == null %}
+                            {{ "" }}
+                        {% else %}
+                            <img class="card-img-top" src="{{ ad.picture }}" alt="{{ ad.name }}">
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <h2 class="card-title">{{ ad.name }}</h2>
+                        <p class="card-text">{{ ad.description|slice(0, 80) }} ...</p>
+                        <p>Ajouté par {{ ad.user.nickname }}</p>
+                    </div>
+                </article>
                 <div>
-                    <img class="card-img-top" src="{{ asset('data/' ~ ad.picture) }}" alt="{{ ad.name }}">
+                    <a href="{{ path('ad_show', {id: ad.id}) }}">En savoir plus</a>
                 </div>
-                <div>
-                    <h2 class="card-title">{{ ad.name }}</h2>
-                    <p class="card-text">{{ ad.description|slice(0, 80) }} ...</p>
-                    <p>Ajouté par {{ ad.user.firstname }}</p>
-                </div>
-            </article>
-            <div>
-                <a href="{{ path('ad_show', {id: ad.id}) }}">En savoir plus</a>
-            </div>
             {% endfor %}
+        </div>
     </div>
 {% endblock %}

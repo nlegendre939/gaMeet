@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Ad;
 use App\Entity\User;
 use App\Form\AdType;
+use App\Form\SearchAdType;
 use App\Repository\AdRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,10 +30,15 @@ class AdController extends AbstractController
     #[Route('', name: 'list')]
     public function list(Request $request): Response
     {
-        $ads = $this->adRepository->findAll();
+        $searchForm = $this->createForm(SearchAdType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $ads = $this->adRepository->search($searchCriteria);
 
         return $this->render('ad/list.html.twig', [
             'ads' => $ads,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 
@@ -47,19 +53,17 @@ class AdController extends AbstractController
     }
 
     #[Route('/new', name: 'new')]
-    // #[Route('/{id}/edit', name: 'edit', requirements: ['id' => '\d+'])]
-    // #[IsGranted('AD_FORM', subject: 'ad')]
-    public function form(Request $request, /* Ad $ad = null */): Response
+    public function form(Request $request, Ad $ad = null): Response
     {
-        // if($ad){
-        //     $isNew = false;
-        // }else{
-        //     $ad = new Ad();
-        //     $ad->setUser($this->getUser());
-        //     $isNew = true;
-        // }
+        if($ad){
+            $isNew = false;
+        }else{
+            $ad = new Ad();
+            $ad->setUser($this->getUser());
+            $isNew = true;
+        }
 
-        $ad = new Ad();
+        // $ad = new Ad();
         $form = $this->createForm(AdType::class, $ad);
 
         $form->handleRequest($request);
@@ -67,8 +71,8 @@ class AdController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) 
         {
             // TODO - Remplacer par l'utilisateur connecté
-            $user = $this->em->getRepository(User::class)->find(1);
-            $ad->setUser($user);
+            // $user = $this->em->getRepository(User::class)->find(1);
+            // $ad->setUser($user);
 
             $this->em->persist($ad);
             $this->em->flush();

@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ event.name }} - {{ parent() }}{% endblock %}
+{% block title %}
+{{ event.name }} - {{ parent() }}
+{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/event/show.css') }}">
@@ -11,10 +13,16 @@
     <div class="card container-md">
         <article class="card-body">
             <div>
-                <img class="card-img-top" src="{{ event.picture }}" alt="{{ event.name }}">
+                {% if event.picture == null %}
+                        {{ "" }}
+                    {% else %}
+                        <img class="card-img-top" src="{{ event.picture }}" alt="{{ event.name }}">
+                    {% endif %}
             </div>
+
             <div>
                 <h2 class="card-title">{{ event.name }}</h2>
+
                 <p>Commence le : {{ event.startAt|date('d/m/Y à h\\hi') }}</p>
                 <p class="card-text">{{ event.description }}</p>
                 <p>Fini le : {{ event.endAt|date('d/m/Y à h\\hi') }}</p>

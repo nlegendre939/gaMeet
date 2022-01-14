@@ -30,6 +30,9 @@ class RegistrationFormType extends AbstractType
             ->add('lastname', TextType::class,[
                 'label'=> 'Nom',
             ])
+            ->add('nickname', TextType::class,[
+                'label'=> 'Pseudo',
+            ])
             ->add('birthdate', BirthdayType::class, [
                 'label' => 'Date de naissance',
                 'widget' => 'single_text',

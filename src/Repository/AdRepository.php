@@ -19,6 +19,18 @@ class AdRepository extends ServiceEntityRepository
         parent::__construct($registry, Ad::class);
     }
 
+    public function search($criteria)
+    {
+        $stmt = $this->createQueryBuilder('a');
+
+        if(!empty($criteria['query']))
+        {
+            $stmt->where('a.name LIKE :query');
+            $stmt->setParameter('query', '%' . $criteria['query'] . '%');
+        }
+        return $stmt->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Ad[] Returns an array of Ad objects
     //  */
