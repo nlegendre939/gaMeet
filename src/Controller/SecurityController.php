@@ -2,17 +2,19 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\ResetPassType;
+use Symfony\Component\Mime\Email;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class SecurityController extends AbstractController
@@ -45,6 +47,7 @@ class SecurityController extends AbstractController
     public function forgottenPass(Request $request, UserRepository $userRepo,EntityManagerInterface $entityManager, MailerInterface  $mailer, TokenGeneratorInterface $tokenGenerator)
     {
         //creation du formulaire
+        
         $form = $this->createForm(ResetPassType::class);
 
         //on traite le formulaire
@@ -66,14 +69,14 @@ class SecurityController extends AbstractController
                 $this->addFlash('danger', 'Erreur lors de l\'envoi');
 
                 $this->redirectToRoute('login');
-
+            }
                 //sil existe on genere un token
                 $token = $tokenGenerator->generateToken();
 
                 try{
-                    $user->setResetToken($token);
+                    $user->getResetToken($token);
                     $entityManager = $this->getDoctrine()->getManager();
-                    $entityManager->persit($user);
+                    $entityManager->persist($user);
                     $entityManager->flush();
                 } 
                 catch(\Exception $e){
@@ -84,13 +87,13 @@ class SecurityController extends AbstractController
                 //on genere le lien de reinitialisation
                 $url = $this->generateUrl('app_reset_password', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
 
-                //on envoie le message
+                //on genere l'email
                 $message = (new Email())
-                    ->subject("Recupération de votre mot de passe")
                     //expediteur
                     ->from('gameetu@outlook.fr')
                     //destinataire
                     ->to($user->getEmail())
+                    ->subject('Recupération de votre mot de passe')
                     //contenu
                     ->html(
                         $this->renderView(
@@ -104,25 +107,21 @@ class SecurityController extends AbstractController
 
                 //  on cree le message flash
                 $this->addFlash('message', 'Un email de reinitialisation de mdp a ete envoyé');
-                return $this->redirectToRoute('login');
+
+                return $this->redirectToRoute('login_');
             }
+
             else{
                 //On envoie vers la page de demande de l'email
-                return $this->render('security/forgotten_password.html.twig', ['emailForm' => $form->createView()]);
+                return $this->render('security/reset_password.html.twig', ['emailForm' => $form->createView()]);
             }
         }
 
-
-        //On envoie vers la page de demande de l'email
-        return $this->render('security/forgotten_password.html.twig', ['emailForm' => $form->createView()]);
-
-    }
-
     
-    #[Route("/reset-pass/{token}", name:"app_reset_password")]
+    #[Route("/forgotten_password/{token}", name:"app_reset_password")]
     public function resetPassword($token, Request $request, UserPasswordEncoderInterface $passwordEncoder){
         //on cherche l'user avec le token fourni
-        $user =$this->getDoctrine()->getRepository(Users::class)->findOneBy(['reset_token' => $token]);
+        $user =$this->getDoctrine()->getRepository(User::class)->findOneBy(['reset_token' => $token]);
         
         if($user){
             $this->addFlash('danger', 'Token inconnu');
@@ -130,18 +129,19 @@ class SecurityController extends AbstractController
         }
 
         //si le formulaire est envoyé en methodPOST
-        if($request->isMethod()){
-            //onsuprime le tokn de l'user
+        if($request->isMethod('POST'))
+        {
+            //onsuprime le tokn de l'user 
             $user->setResetToken(null);
 
             //on chiffre le mdp
             $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persit($user);
+            $entityManager->persist($user);
             $entityManager->flush();
 
             $this->addFlash('message', 'Mot de passe modifié avec succès');
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('login_');
         }else{
             return $this->render('security/forgotten_password.html.twig', ['token'=> $token]);
         }

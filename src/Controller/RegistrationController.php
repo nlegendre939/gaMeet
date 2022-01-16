@@ -56,6 +56,7 @@ class RegistrationController extends AbstractController
                     'text/html'
                 )
             ;
+            $this->addFlash('message', 'Un lien de confirmation vous a été envoyé');
 
             //On envoie le mail
             $mailer->send($message);
