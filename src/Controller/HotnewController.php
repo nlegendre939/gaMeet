@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Hotnew;
 use App\Entity\User;
+use App\Entity\Hotnew;
 use App\Form\HotnewType;
+use App\Form\SearchHotnewType;
 use App\Repository\HotnewRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,10 +30,15 @@ class HotnewController extends AbstractController
     #[Route('', name: 'list')]
     public function list(Request $request): Response
     {
-        $hotnews = $this->hotnewRepository->findAll();
+        $searchForm = $this->createForm(SearchHotnewType::class);
+        $searchForm->handleRequest($request);
+        $searchCriteria = $searchForm->getData();
+
+        $hotnews = $this->hotnewRepository->search($searchCriteria);
 
         return $this->render('hotnew/list.html.twig', [
             'hotnews' => $hotnews,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 
@@ -47,7 +53,7 @@ class HotnewController extends AbstractController
     }
 
     #[Route('/new', name: 'new')]
-    public function form(Request $request, Ad $hotnew = null): Response
+    public function form(Request $request, Hotnew $hotnew = null): Response
     {
         if($hotnew){
             $isNew = false;

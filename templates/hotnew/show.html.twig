@@ -12,14 +12,18 @@
 <div class="card container-md">
     <article class="card-body">
         <div>
-            <img class="card-img-top" src="{{ hotnew.picture }}" alt="{{ hotnew.title }}">
+            {% if hotnew.picture == null %}
+                {{ "" }}
+            {% else %}
+                <img class="card-img-top" src="{{ hotnew.picture }}" alt="{{ hotnew.title }}">
+            {% endif %}
         </div>
         <div>
             <h2 class="card-title">{{ hotnew.title }}</h2>
             <p>Publié le {{ hotnew.publishAt|date('d/m/Y à h\\hi') }}</p>
             <p class="card-text">{{ hotnew.content }}</p>
             <p>Créé le {{ hotnew.createAt|date('d/m/Y à h\\hi') }}</p>
-            <p class="card-text">Ajouté par {{ hotnew.user.firstname }}</p>
+            <p class="card-text">Ajouté par {{ hotnew.user.nickname }}</p>
         </div>
     </article>
 </div>

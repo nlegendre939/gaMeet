@@ -1,8 +1,13 @@
-p, .card, a {
+h1, p, .card, a {
     color: #DEFFF2;
 }
+
 .card {
     background-color: #000009;
+}
+
+input[type="search"] {
+    width: 300px;
 }
 
 hr {
@@ -17,8 +22,9 @@ hr {
     width: 400px;
 }
 
-p {
+p, a {
     margin: 0;
+    font-size: 1.4rem;
 }
 
 .text-space {

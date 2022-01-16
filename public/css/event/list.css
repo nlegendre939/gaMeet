@@ -26,8 +26,9 @@ hr {
     width: 400px;
 }
 
-p {
+p, a {
     margin: 0;
+    font-size: 1.4rem;
 }
 
 .text-space {

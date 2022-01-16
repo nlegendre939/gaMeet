@@ -8,18 +8,28 @@
 
 {% block body %}
     <div class="border container-md">
-        <h1>
+        <h1 class="text-center">
             Les annonces
         </h1>
 
-        {{ form_start(searchForm) }}
+        <a class="d-flex justify-content-center" href="{{ path('ad_new') }}">
+            Créer une annonce
+        </a>
 
-            {{ form_row(searchForm.query) }}
-            {{ form_row(searchForm.submit) }}
+        <span class="text-space"></span>
 
-        {{ form_end(searchForm) }}
+        <div class="d-flex justify-content-center">
+            {{ form_start(searchForm) }}
+
+                {{ form_row(searchForm.query) }}
+                {{ form_row(searchForm.submit) }}
+
+            {{ form_end(searchForm) }}
+        </div>
+        
         <br>
-        <p>
+
+        <p class="text-center">
             Toi aussi rejoins les meilleurs joueurs pour former la meilleure équipe !
             <br><span class="text-space"></span>
             Tu trouveras facilement le nom de la team et joueurs que tu cherches.

@@ -9,37 +9,31 @@
 
 {% block body %}
 
-
-
-
-<div class="example-wrapper">
     <h1>Rechercher un joueur</h1><br>
 
-    
-       <p>Recherche un joueur par son pseudo, ou filtre par le jeu et le support.<br>
+    <div class="example-wrapper">
+        <p>Recherche un joueur par son pseudo, ou filtre par le jeu et le support.</p>
         
-        Accède à son Profil Joueur et voir ce qu'il a publié.<br>
-        Pour entrer en contact avec lui ou elle, tu dois au préalable t'inscrire 
-        ou te connecter sur Gameet.
-        
-    
-    </p>
-    <div class="row d-flex justify-content-center">
+        <p>Accède à son Profil Joueur et voir ce qu'il a publié.</p>
+
+        <p>Pour entrer en contact avec lui ou elle, tu dois au préalable t'inscrire 
+            ou te connecter sur Gameet.</p>
+    </div> 
+
     {{ form_start(searchForm) }}
+
     <div class="row d-flex justify-content-left">
         <div class="col-2">
-          
-     {{ form_end(searchForm) }}
+            {{ form_end(searchForm) }}
  
-    Listes des derniers joueurs inscrits:
-    <div class="example-wrapper">
-      Pikachuu85<br>
-      Queenn59<br>
-      CobraX
+            Listes des derniers joueurs inscrits:
 
-
-  
-
-
+            <div class="example-wrapper">
+                Pikachuu85<br>
+                Queenn59<br>
+                CobraX
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
