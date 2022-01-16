@@ -14,7 +14,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'username' => "Geekeur7",
+            'nickname' => "Geekeur7",
             'email' => "geekeur7@game.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -22,7 +22,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'username' => "Pikachu59",
+            'nickname' => "Pikachu59",
             'email' => "pikachu@bep.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -30,7 +30,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'username' => "Badass",
+            'nickname' => "Badass",
             'email' => "badass@gmail.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -38,7 +38,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'username' => "darklight",
+            'nickname' => "darklight",
             'email' => "darklight@light.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -46,7 +46,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'username' => "Queen",
+            'nickname' => "Queen",
             'email' => "queen@outlook.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -54,7 +54,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'username' => "CobraX",
+            'nickname' => "CobraX",
             'email' => "cobra@snake.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -62,7 +62,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'username' => "ninjaboy",
+            'nickname' => "ninjaboy",
             'email' => "ninjaboy@gun.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -90,7 +90,7 @@ class UserFixtures extends Fixture
 
             $hashed = $this->encoder->encodePassword($user, $item['password']);
 
-            //$user->setUsername( $item['username'] );
+            $user->setNickname( $item['nickname'] );
             $user->setFirstname( $item['firstname'] );
             $user->setLastname( $item['lastname'] );
             $user->setEmail( $item['email'] );
