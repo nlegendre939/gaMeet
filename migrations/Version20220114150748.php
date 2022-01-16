@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220113111939 extends AbstractMigration
+final class Version20220114150748 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -24,7 +24,7 @@ final class Version20220113111939 extends AbstractMigration
         $this->addSql('CREATE TABLE contact (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(40) NOT NULL, email VARCHAR(255) NOT NULL, question LONGTEXT NOT NULL, message LONGTEXT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE event (id INT AUTO_INCREMENT NOT NULL, team_id INT DEFAULT NULL, name VARCHAR(60) NOT NULL, picture VARCHAR(255) DEFAULT NULL, description LONGTEXT NOT NULL, start_at DATETIME NOT NULL, end_at DATETIME NOT NULL, INDEX IDX_3BAE0AA7296CD8AE (team_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE event_user (event_id INT NOT NULL, user_id INT NOT NULL, INDEX IDX_92589AE271F7E88B (event_id), INDEX IDX_92589AE2A76ED395 (user_id), PRIMARY KEY(event_id, user_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE hotnew (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, title VARCHAR(250) NOT NULL, slug VARCHAR(255) DEFAULT NULL, content LONGTEXT NOT NULL, create_at DATETIME NOT NULL, publish_at DATETIME NOT NULL, datetime TINYINT(1) DEFAULT NULL, edit_at DATETIME DEFAULT NULL, picture VARCHAR(255) DEFAULT NULL, INDEX IDX_3EF86694A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE hotnew (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, title VARCHAR(250) NOT NULL, slug VARCHAR(255) DEFAULT NULL, content LONGTEXT NOT NULL, create_at DATETIME NOT NULL, publish_at DATETIME DEFAULT NULL, datetime TINYINT(1) DEFAULT NULL, edit_at DATETIME DEFAULT NULL, picture VARCHAR(255) DEFAULT NULL, INDEX IDX_3EF86694A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE support (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(45) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE support_user (support_id INT NOT NULL, user_id INT NOT NULL, INDEX IDX_5585401A315B405 (support_id), INDEX IDX_5585401AA76ED395 (user_id), PRIMARY KEY(support_id, user_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE team (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(45) NOT NULL, lead VARCHAR(45) NOT NULL, description LONGTEXT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
