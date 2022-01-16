@@ -36,11 +36,11 @@ class MainController extends AbstractController
     #[Route('/', name: 'main_index')]
     public function index(): Response
     {
-        $users = $this->userRepository->findBy(array(),array('id' => 'DESC'),2 ,0);
-        $teams = $this->teamRepository->findBy(array(),array('id' => 'DESC'),2 ,0);
-        $ads = $this->adRepository->findBy(array(),array('id' => 'DESC'),2 ,0);
-        $events = $this->eventRepository->findBy(array(),array('id' => 'DESC'),2 ,0);
-        $hotnews = $this->hotnewRepository->findBy(array(),array('id' => 'DESC'),2 ,0);
+        $users = $this->userRepository->findBy(array(),array('id' => 'DESC'),5 ,0);
+        $teams = $this->teamRepository->findBy(array(),array('id' => 'DESC'),5 ,0);
+        $ads = $this->adRepository->findBy(array(),array('id' => 'DESC'),5 ,0);
+        $events = $this->eventRepository->findBy(array(),array('id' => 'DESC'),5 ,0);
+        $hotnews = $this->hotnewRepository->findBy(array(),array('id' => 'DESC'),5 ,0);
 
 
         return $this->render('main/index.html.twig', [
