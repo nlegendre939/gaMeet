@@ -113,7 +113,7 @@ class SecurityController extends AbstractController
 
             else{
                 //On envoie vers la page de demande de l'email
-                return $this->render('security/reset_password.html.twig', ['emailForm' => $form->createView()]);
+                return $this->render('security/forgotten_password.html.twig', ['emailForm' => $form->createView()]);
             }
         }
 

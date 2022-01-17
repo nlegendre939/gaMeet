@@ -7,25 +7,51 @@
 {% endblock %}
 
 {% block body %}
-    <p class="text-center">
-      Toute l'acualité du jeu vidéo rien que pour toi sur GAMEET
-    <br><span class="text-space"></span>
-      Si toi aussi tu veux t'exprimer, connecte toi ou inscrit toi !
-    </p>
+    <h1 class="text-center">
+        Les actualités
+    </h1>
+
+    <a class="d-flex justify-content-center" href="{{ path('hotnew_new') }}">
+        Créer une actualité
+    </a>
+
+    <span class="text-space"></span>
+
+    <div class="d-flex justify-content-center">
+        {{ form_start(searchForm) }}
+
+            {{ form_row(searchForm.query) }}
+            {{ form_row(searchForm.submit) }}
     
+        {{ form_end(searchForm) }}
+    </div>
+
+    <br>
+    
+    <p class="text-center">
+        Toute l'acualité du jeu vidéo rien que pour toi sur GAMEET
+    <br>
+        Si toi aussi tu veux t'exprimer, connecte toi ou inscrit toi !
+    </p>
+
     <div class="card container-md">
         <hr>
         {% for hotnew in hotnews %}
             <article class="card-body">
                 <div>
-                    <img class="card-img-top" src="{{ hotnew.picture }}" alt="{{ hotnew.title }}">
+                    {% if hotnew.picture == null %}
+                        {{ "" }}
+                    {% else %}
+                        <img class="card-img-top" src="{{ hotnew.picture }}" alt="{{ hotnew.title }}">
+                    {% endif %}
                 </div>
+
                 <div>
                     <h2 class="card-title">{{ hotnew.title }}</h2>
                     <p>Publié le {{ hotnew.publishAt|date('d/m/Y à h\\hi') }}</p>
                     <p class="card-text">{{ hotnew.content }}</p>
                     <p>Créé le {{ hotnew.createAt|date('d/m/Y à h\\hi') }}</p>
-                    <p class="card-text">Ajouté par {{ hotnew.user.firstname }}</p>
+                    <p class="card-text">Ajouté par {{ hotnew.user.nickname }}</p>
                 </div>
             </article>
             <div>

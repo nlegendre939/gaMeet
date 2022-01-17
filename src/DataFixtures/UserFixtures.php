@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use App\Entity\Hotnew;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -100,25 +101,12 @@ class UserFixtures extends Fixture
 
 
             $manager->persist($user);
-        }
-        for($i=0; $i<=5; $i++)
-        {
-            $hotnew = new Hotnew();
-
-            $hotnew->setTitle('hotnew');
-            $hotnew->setSlug();
-            $hotnew->setContent();
-            $hotnew->setCreateAt();
-            $hotnew->setPublishAt();
-            $hotnew->setEditAt();
-            $hotnew->setPicture();
-            
-        }
+        } 
             $manager->flush();
     }
+    public function getOrders ()
+    {
+        return 1;
+    }
 
-
-    // getOrders () {
-        //return 1;
-    //}
 }

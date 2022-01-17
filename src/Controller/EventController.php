@@ -52,7 +52,7 @@ class EventController extends AbstractController
     }
 
     #[Route('/new',name: 'new')]
-    public function form(Request $request, Event $event = null): Response
+    public function form(Request $request, Event $event =null): Response
     {
         if($event){
             $isNew = false;
@@ -61,7 +61,7 @@ class EventController extends AbstractController
             $event->addUser($this->getUser());
             $isNew = true;
         }
-
+        
         // $event = new Event();
         $form = $this->createForm(EventType::class, $event);
 

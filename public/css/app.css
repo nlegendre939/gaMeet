@@ -17,9 +17,21 @@ header .text-center{
     top: 400px;
     right: 0;
     bottom: 0;
-    left: 550px;
+    left: 540px;
     display: flex;
     border: none;
+}
+
+a.link-green{
+        color: #DEFFF2;
+}
+
+a.link-green:hover{
+    color: #0ff4c6;
+}
+
+.space{
+    margin-right: 20px;
 }
 
 .btn a{
@@ -46,15 +58,12 @@ header .text-center{
 }
 
 .navbar-brand{ 
+    font-size: 1.5rem;
     color: #0ff4c6;
 }
 
 .navbar-brand:hover{ 
     color: #D68FD6;
-} 
-
-h1, h2 {
-    color:#0FF4C6;
 }
     
 .notification-manager{

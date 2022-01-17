@@ -17,5 +17,71 @@
             <h2 class="text-center">Rejoignez nous !</h2>
             </a>
         </div>
+
+        <br>
+
+        <div class="d-flex justify-content-center gap-5">
+            <div class="text-center">
+                Derniers joueurs inscrits :
+                <br>
+                {% for user in users %}
+                    <div>
+                        <h2 class="card-title">{{ user.nickname }}</h2>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center">
+                Dernières équipes inscrites :
+                <br>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="d-flex justify-content-center gap-5">
+            <div class="text-center">
+                Dernières annonces :
+                <br>
+                {% for ad in ads %}
+                    <div>
+                        <h2 class="card-title">{{ ad.name }}</h2>
+                        <p class="card-text">{{ ad.description|slice(0, 80) }} ...</p>
+                        <p>Ajouté par {{ ad.user.nickname }}</p></p>
+                    </div>
+                {% endfor %}
+            </div>
+    
+            <div class="text-center">
+                Derniers événements :
+                <br>
+                {% for event in events %}
+                    <div>
+                        <h2 class="card-title">{{ event.name }}</h2>
+                        <p>Commence le : {{ event.startAt|date('d/m/Y à h\\hi') }}</p>
+                        <p class="card-text">{{ event.description|slice(0, 80) }} ...</p>
+                        <p>Fini le : {{ event.endAt|date('d/m/Y à h\\hi') }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <br>
+        
+        <div class="d-flex justify-content-center gap-5">
+            <div class="text-center">
+                Dernières actualités :
+                <br>
+                {% for hotnew in hotnews %}
+                    <div>
+                        <h2 class="card-title">{{ hotnew.title }}</h2>
+                        <p>Publié le {{ hotnew.publishAt|date('d/m/Y à h\\hi') }}</p>
+                        <p class="card-text">{{ hotnew.content }}</p>
+                        <p>Créé le {{ hotnew.createAt|date('d/m/Y à h\\hi') }}</p>
+                        <p class="card-text">Ajouté par {{ hotnew.user.nickname }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}

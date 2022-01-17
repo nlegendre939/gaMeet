@@ -19,6 +19,18 @@ class HotnewRepository extends ServiceEntityRepository
         parent::__construct($registry, Hotnew::class);
     }
 
+    public function search($criteria)
+    {
+        $stmt = $this->createQueryBuilder('h');
+
+        if(!empty($criteria['query']))
+        {
+            $stmt->where('h.title LIKE :query');
+            $stmt->setParameter('query', '%' . $criteria['query'] . '%');
+        }
+        return $stmt->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Hotnew[] Returns an array of Hotnew objects
     //  */

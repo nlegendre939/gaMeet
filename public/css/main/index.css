@@ -1,0 +1,12 @@
+h1.text-center, h2.text-center{
+    color: #0ff4c6;
+}
+
+.text-center{
+    font-size: 1.4rem;
+    color: #defff2;
+}
+
+.gap-5{
+    gap: 20rem!important;
+}
