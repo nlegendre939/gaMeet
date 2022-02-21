@@ -11,22 +11,18 @@ Inscription - {{ parent() }}
 {% block body %}
     
     {{ form_start(registrationForm) }}
-    
         <div class="container-md">
             <h1 class="text-center">
                 Inscription
             </h1>
-            <div class="col-2">
                 {{ form_row(registrationForm.nickname) }}
                 {{ form_row(registrationForm.firstname) }}
                 {{ form_row(registrationForm.lastname) }}
                 {{ form_row(registrationForm.email) }}
                 {{ form_row(registrationForm.birthdate) }}
-                {{ form_row(registrationForm.password, {
-                    label: 'Password'}) }}
+                {{ form_row(registrationForm.password, {label: 'Password'}) }}
                 {{ form_row(registrationForm.agreeTerms) }}
                 <button type="submit" class="button">M'inscrire</button>
-            </div>
         </div>
     {{ form_end(registrationForm) }}
 

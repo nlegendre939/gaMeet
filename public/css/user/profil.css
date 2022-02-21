@@ -1,0 +1,13 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color:antiquewhite;
+    min-height: 100%;
+}
+main{
+    min-height: 100%;
+}
+footer{
+    margin-top: 0;
+}

@@ -8,6 +8,7 @@ use App\Form\AdType;
 use App\Form\SearchAdType;
 use App\Repository\AdRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,19 +29,27 @@ class AdController extends AbstractController
     }
 
     #[Route('', name: 'list')]
-    public function list(Request $request): Response
+    public function list(AdRepository $adRepository, Request $request, PaginatorInterface $paginator): Response
     {
         $searchForm = $this->createForm(SearchAdType::class);
         $searchForm->handleRequest($request);
         $searchCriteria = $searchForm->getData();
 
         $ads = $this->adRepository->search($searchCriteria);
+        $ads = $adRepository->findAll();
+
+        $ads = $paginator->paginate(
+            $ads,
+            $request->query->getInt('page', 1), 
+            6
+        );
 
         return $this->render('ad/list.html.twig', [
             'ads' => $ads,
             'searchForm' => $searchForm->createView(),
+            
         ]);
-    }
+}
 
     #[Route('{id}/show', name: 'show', requirements: ['id' => '\d+'])]
     public function show($id): Response
@@ -87,4 +96,5 @@ class AdController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+    
 }

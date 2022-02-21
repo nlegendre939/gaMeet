@@ -24,8 +24,9 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
             // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(
@@ -33,7 +34,7 @@ class RegistrationController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
-
+        
             //Generation du token pour la verif de l'email
             $user->setActivationToken(md5(uniqid()));
 
@@ -54,8 +55,8 @@ class RegistrationController extends AbstractController
                         'email/activation.html.twig', ['token'=> $user->getActivationToken()]
                     ),
                     'text/html'
-                )
-            ;
+                );
+            
             $this->addFlash('message', 'Un lien de confirmation vous a été envoyé');
 
             //On envoie le mail
@@ -68,12 +69,8 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
-
-    
-
         //creation de la methode pour verifier l'email
 
-    
     #[Route('/activation/{token}', name:'activation')]
     public function activation($token, UserRepository $userRepo){
         //on verifie si un utilisateur a ce token

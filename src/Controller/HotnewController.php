@@ -8,6 +8,7 @@ use App\Form\HotnewType;
 use App\Form\SearchHotnewType;
 use App\Repository\HotnewRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,13 +29,21 @@ class HotnewController extends AbstractController
     }
 
     #[Route('', name: 'list')]
-    public function list(Request $request): Response
+    public function list(HotnewRepository $hotnewRepository, Request $request, PaginatorInterface $paginator): Response
     {
         $searchForm = $this->createForm(SearchHotnewType::class);
         $searchForm->handleRequest($request);
         $searchCriteria = $searchForm->getData();
 
         $hotnews = $this->hotnewRepository->search($searchCriteria);
+
+        $hotnews = $hotnewRepository->findAll();
+
+        $hotnews = $paginator->paginate(
+            $hotnews,
+            $request->query->getInt('page', 1), 
+            4
+        );
 
         return $this->render('hotnew/list.html.twig', [
             'hotnews' => $hotnews,

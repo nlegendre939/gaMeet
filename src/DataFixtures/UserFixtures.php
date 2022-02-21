@@ -3,72 +3,13 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
-use App\Entity\Hotnew;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Faker\Factory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends Fixture
 { 
-
-    const DATA = [
-        [
-            'firstname' => "John",
-            'lastname' => "DOE",
-            'nickname' => "Geekeur7",
-            'email' => "geekeur7@game.com",
-            'password' => "123456",
-            'roles' => ["ROLE_USER"],
-        ],
-        [
-            'firstname' => "John",
-            'lastname' => "DOE",
-            'nickname' => "Pikachu59",
-            'email' => "pikachu@bep.com",
-            'password' => "123456",
-            'roles' => ["ROLE_USER"],
-        ],
-        [
-            'firstname' => "John",
-            'lastname' => "DOE",
-            'nickname' => "Badass",
-            'email' => "badass@gmail.com",
-            'password' => "123456",
-            'roles' => ["ROLE_USER"],
-        ],
-        [
-            'firstname' => "John",
-            'lastname' => "DOE",
-            'nickname' => "darklight",
-            'email' => "darklight@light.com",
-            'password' => "123456",
-            'roles' => ["ROLE_USER"],
-        ],
-        [
-            'firstname' => "John",
-            'lastname' => "DOE",
-            'nickname' => "Queen",
-            'email' => "queen@outlook.com",
-            'password' => "123456",
-            'roles' => ["ROLE_USER"],
-        ],
-        [
-            'firstname' => "John",
-            'lastname' => "DOE",
-            'nickname' => "CobraX",
-            'email' => "cobra@snake.com",
-            'password' => "123456",
-            'roles' => ["ROLE_USER"],
-        ],
-        [
-            'firstname' => "John",
-            'lastname' => "DOE",
-            'nickname' => "ninjaboy",
-            'email' => "ninjaboy@gun.com",
-            'password' => "123456",
-            'roles' => ["ROLE_USER"],
-        ],
-    ];
 
     /**
      * Password encode interface
@@ -77,7 +18,7 @@ class UserFixtures extends Fixture
      */
     private $encoder;
 
-    function __construct(UserPasswordEncoderInterface $encoder)
+    public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
     }
@@ -85,25 +26,29 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::DATA as $item)
+        $faker = Factory::create('fr_FR');
+
+        for($i=1;$i<=50;$i++)
         {
-            $user = new User;
+        $user = new User;
 
-            $hashed = $this->encoder->encodePassword($user, $item['password']);
+        $user->setEmail($faker->email())
+            ->setFirstname($faker->firstname())
+            ->setLastname($faker->lastname())
+            ->setBirthdate($faker->dateTimeBetween())
+            ->setNickname($faker->userName());
 
-            $user->setNickname( $item['nickname'] );
-            $user->setFirstname( $item['firstname'] );
-            $user->setLastname( $item['lastname'] );
-            $user->setEmail( $item['email'] );
-            $user->setPassword( $hashed );
-            $user->setRoles( $item['roles'] );
-            $user->setBirthdate( new \DateTime() );
-
+            $password = $this->encoder->encodePassword($user,'password');
+            $user->setPassword($password);
 
             $manager->persist($user);
-        } 
+
+            $this->addReference('user_'. $i, $user);
+        }
             $manager->flush();
-    }
+    } 
+            
+    
     public function getOrders ()
     {
         return 1;

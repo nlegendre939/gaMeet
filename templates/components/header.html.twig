@@ -1,76 +1,53 @@
 <header>
-	<div class="text-center container">
-		<img class="gaMeet img-fluid" src="/images/gaMeet.png" alt="Responsive image">
-
-		<div class="containerbtn">
-			{% if app.user %}
-				
-					<a class="link-green space" href="#">
-						<i class="fas fa-user"></i>
-						{{ app.user.nickname }}
-					</a>
-					<a class="link-green" href="{{ path('logout') }}">
-						Déconnexion
-					</a>
-			{% else %} 
-					<button class="btn link-green" type="submit">
-						<a href="{{ path('login_') }}">
-							Connexion
-						</a>
-					</button>
-
-					<button class="btn link-green" type="submit">
-						<a href="{{ path('app_register') }}">
-							Inscription
-						</a>
-					</button>
-			{% endif %}	
+	<nav>
+		<div class="logo">
+			<i class="fas fa-gamepad fa-3x"></i>
 		</div>
-	</div>
+		<div class="toggle">
+			<i class="fas fa-bars ouvrir" ></i>
+			<i class="fas fa-times fermer"></i>
+		</div>
+		<ul class="menu">
+			<li>
+				<a href="{{ path('main_index') }}" class="navlink">Accueil</a>
+			</li>
+			<li>
+				<a href="{{ path('user') }}" class="navlink">Joueurs</a>
+			</li>
+			{# <li>
+				<a href="#">Équipes</a>
+			</li> #}
+			<li>
+				<a href="{{ path('ad_list') }}" class="navlink">Annonces</a>
+			</li>
+			<li>
+				<a href="{{ path('event_list') }}" class="navlink">Événements</a>
+			</li>
+			<li>
+				<a href="{{ path('hotnew_list') }}" class="navlink">Actualités</a>
+			</li>
+			<li>
+				{% if app.user %}
+					<a class="link-green space" href="{{ path('profil_') }}" class="navlink">
+						<i class="fas fa-user-astronaut"></i>
+							{{ app.user.nickname }}
+					</a>
+					<a class="link-green" href="{{ path('logout') }}" class="navlink">Déconnexion</a>
+			</li>
+			<li>		
+				{% else %} 
+					<button class="btn btn-secondary">
+						<a href="{{ path('login_') }}" class="navlink">Connexion</a>
+					</button>
+			</li>
+			<li>		
+						<button class="btn btn-secondary">
+							<a href="{{ path('app_register') }}" class="navlink">Inscription</a>
+						</button>
+				{% endif %}
+			</li>
+		</ul>
+		
+	</nav>
 
-	<div class="navbar">
-		<nav class="navbar navbar-expand-lg text-center">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-				<a class="navbar-brand" href="{{ path('main_index') }}">
-					Accueil
-				</a>
-
-				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-					<li class="nav-item" class="text-center">
-						<a class="nav-link active" href="{{ path('user') }}">
-							Joueurs
-						</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-link" href="#">
-							Équipes
-						</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('ad_list') }}">
-							Annonces
-						</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('event_list') }}">
-							Événements
-						</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('hotnew_list') }}">
-							Actualités
-						</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</div>
 </header>

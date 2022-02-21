@@ -8,6 +8,7 @@ use App\Form\EventType;
 use App\Form\SearchEventType;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,13 +28,21 @@ class EventController extends AbstractController
         $this->eventRepository = $eventRepository;
     }
     #[Route('', name: 'list')]
-    public function list(Request $request): Response
+    public function list(EventRepository $eventRepository, Request $request, PaginatorInterface $paginator): Response
     {
         $searchForm = $this->createForm(SearchEventType::class);
         $searchForm->handleRequest($request);
         $searchCriteria = $searchForm->getData();
 
         $events = $this->eventRepository->search($searchCriteria);
+
+        $events = $eventRepository->findAll();
+
+        $events = $paginator->paginate(
+            $events,
+            $request->query->getInt('page', 1), 
+            4
+        );
 
         return $this->render('event/list.html.twig', [
             'events' => $events,

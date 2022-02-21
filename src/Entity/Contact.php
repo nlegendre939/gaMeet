@@ -6,9 +6,6 @@ use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
-
-
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
 {
@@ -29,7 +26,6 @@ class Contact
  */
     #[ORM\Column(type: 'string', length: 40)]
     private $Name;
-
 
        /* * 
  * @var string|null
@@ -57,6 +53,12 @@ class Contact
  */
     #[ORM\Column(type: 'text')]
     private $Message;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $date;
+
+    // #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    // private $name;
 
     public function getId(): ?int
     {
@@ -107,6 +109,18 @@ class Contact
     public function setMessage(string $Message): self
     {
         $this->Message = $Message;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

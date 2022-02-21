@@ -26,6 +26,9 @@ class UserType extends AbstractType
             ])
             ->add('plainPassword', PasswordType::class, [
                 'label' => 'Mot de passe',
+                'contraints' => [
+                    'message' => 'Erreur lors de la saisie du mdp'
+                ]
             ])
             ->add('birthdate', BirthdayType::class, [
                 'label' => 'Date de naissance',

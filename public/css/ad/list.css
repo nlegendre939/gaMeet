@@ -1,18 +1,37 @@
-h1, p, .card, a {
-    color: #DEFFF2;
+@import url('http://fonts.googleapis.com/css?family=Quicksand:300');
+main{
+    flex-direction: column;
+    margin-top:70px;
 }
-
+.adtitle{
+    margin-left:10px;
+    text-transform: uppercase;
+    font-size: 30px;
+    color: #f1f1f1;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    
+}
+.create a{
+    color: #f1f1f1;
+    font-family: Abril fatface, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+}
 input[type="search"] {
     width: 300px;
 }
 
-.border {
+.container-sm{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    margin-right: 25%;
+    margin-bottom: auto;
     width: 100vh;
-    border: 1px solid #D68FD6!important;
-}
-
-.card {
-    background-color: #000009;
+    border:2px solid #D68FD6;
+    margin: 5px;
+    padding: 5px;
 }
 
 hr {
@@ -20,17 +39,46 @@ hr {
     border: 1px solid #D68FD6;
     width: 400px;
     opacity: 1;
+    margin-left: 30%;
 }
-
+.createsearchad{
+    display: flex;
+    padding:5px;
+    margin: 10px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: black;
+    border:none;
+}
+.adformbtnsub{
+    padding-left: 2px;
+}
+.ads{
+    display: flex;
+    flex-wrap: wrap;
+}
 .card-text {
+    font-size: 14px;
     margin-bottom: 10px;
-    width: 400px;
+    width: 200px;
+}
+.card-body{
+    font: size 10px;
+}
+.card-title{
+    font-size: 18px;
 }
 
-p, a {
+/* p, a {
     margin: 0;
     font-size: 1.4rem;
-}
+} */
 
 .text-space {
     padding-top: 20px;
@@ -38,6 +86,68 @@ p, a {
 }
 
 a:hover {
-  color: #0FF4C6;
-  transform: scaleX(1.02);
+    color: #20B2AA;
+    transform: scaleX(1.02);
+}
+
+ /* //pagination//  */
+
+.pagination{
+    font-family:'Quicksand';
+    font-weight: bold;
+    display:flex;
+    margin:auto;
+    padding:5px;
+    border-radius: 50px;
+    background-color: black;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+}
+.page{
+    display: flex;
+    height: 45px;
+    width:45px;
+    justify-content: center;
+    align-items: center;
+}
+span{
+    margin: 1px;
+}
+.first{
+    margin-left: 1px;
+    
+}
+.first, .next, .previous, .last{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+}
+.current{
+    display: flex;
+    height: 35px;
+    width:35px;
+    justify-content: center;
+    align-items: center;
+    background-color: #32ccc4;
+    border-radius: 25px 25px 25px 25px;
+    color: black;
+    
+}
+.next a, .last a, .first a, .previous a{
+    background-color: #32ccc4;
+    padding:0 15px;
+    color: black;
+}
+.first a{
+    border-radius:25px 5px 5px 25px;
+}
+.previous a, .next a {
+    border-radius: 25px 25px 25px 25px;
+    width:auto;
+
+}
+.last a {
+    border-radius: 5px 25px 25px 5px;
 }

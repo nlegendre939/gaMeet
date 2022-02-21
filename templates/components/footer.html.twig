@@ -1,133 +1,131 @@
-<footer class="container-md">
+<footer>
+	<div
+		class="footermenu d-flex">
+		<!--Grid column-->
+		<div class="col">
+			<ul class="list-unstyled mb-0">
+				<li>
+					<a href="{{ path('main_index') }}" class="text-green">
+						Accueil
+					</a>
+				</li>
 
-    <!--Grid row-->
-    <div class="row">
+				<li>
+					<a href="{{ path('login_') }}" class="text-green">
+						Connexion
+					</a>
+					-
+					<a href="{{ path('app_register') }}" class="text-green">
+						Inscription
+					</a>
+				</li>
+				{# <li>
+								                    <a href="{{ path('user') }}" class="text-green">
+								                        Joueurs
+								                    </a>
+								                </li>
+								
+								                <li>
+								                    <a href="#!" class="text-green">
+								                        Équipes
+								                    </a>
+								                </li> #}
+			</ul>
+		</div>
+		<!--Grid column-->
 
-        <!--Grid column-->
-        <div class="col-lg-3 mb-4 mb-md-0">
+		<!--Grid column-->
+		<div class="col">
+			<ul class="list-unstyled mb-0">
+				<li>
+					<a href="{{ path('ad_list') }}" class="text-green">
+						Annonces
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('event_list') }}" class="text-green">
+						Événements
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('hotnew_list') }}" class="text-green">
+						Actualités
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--Grid column-->
+		<div class="col">
+			<ul class="list-unstyled mb-0">
+				<li>
+					<a href="{{ path('presentation') }}" class="text-green">
+						Présentation GAMEET
+					</a>
+				</li>
+
+				<li>
+					<a href="#!" class="text-green">
+						Modération
+					</a>
+				</li>
+
+				<li>
+					<a href="{{ path('contact_') }}" class="text-green">
+						Contact
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--Grid column-->
+
+		<!--Grid column-->
+		<div class="col">
+			<ul class="list-unstyled mb-0">
+				<li>
+					<a href="{{ path('term_of_use') }}" class="text-green">
+						Conditions générales
+					</a>
+				</li>
+
+				<li>
+					<a href="{{ path('charter_gameet') }}" class="text-green">
+						Charte GAMEET
+					</a>
+				</li>
+
+				<li>
+					<a href="{{ path('confidentiality') }}" class="text-green">
+						Politique de confidentialité
+					</a>
+				</li>
+            </ul>
+            
+			
+		</div>
+        <div class="col">
             <ul class="list-unstyled mb-0">
                 <li>
-                    <a href="{{ path('main_index') }}" class="text-green">
-                        Accueil
-                    </a>
-                </li>
+					<a href="{{ path('cookies_policy') }}" class="text-green">
+						Politique d'utilisation des cookies
+					</a>
+				</li>
 
-                <li>
-                    <a href="{{ path('login_') }}" class="text-green">
-                        Connexion
-                    </a>
-                    -
-                    <a href="{{ path('app_register') }}" class="text-green">
-                        Inscription
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ path('user') }}" class="text-green">
-                        Joueurs
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#!" class="text-green">
-                        Équipes
-                    </a>
-                </li>
+				<li>
+					<a href="{{ path('legal_notice') }}" class="text-green">
+						Mentions légales
+					</a>
+				</li>
             </ul>
         </div>
-        <!--Grid column-->
+	</div>
+</div>
+<!--Grid row-->
 
-        <!--Grid column-->
-        <div class="col-lg-3 mb-4 mb-md-0">
-            <ul class="list-unstyled mb-0">
-                <li>
-                    <a href="{{ path('ad_list') }}" class="text-green">
-                        Annonces
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('event_list') }}" class="text-green">
-                        Événements
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('hotnew_list') }}" class="text-green">
-                        Actualités
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 mb-4 mb-md-0">
-            <ul class="list-unstyled mb-0">
-                <li>
-                    <a href="{{ path('presentation') }}" class="text-green">
-                        Présentation GAMEET
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#!" class="text-green">
-                        Modération
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ path('contact') }}" class="text-green">
-                        Contact
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 mb-4 mb-md-0">
-            <ul class="list-unstyled mb-0">
-                <li>
-                    <a href="{{ path('term_of_use') }}" class="text-green">
-                        Conditions générales
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ path('charter_gameet') }}" class="text-green">
-                        Charte GAMEET
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ path('confidentiality') }}" class="text-green">
-                        Politique de confidentialité
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ path('cookies_policy') }}" class="text-green">
-                        Politique d'utilisation des cookies
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ path('legal_notice') }}" class="text-green">
-                        Mentions légales
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!--Grid column-->
-
-    </div>
-    <!--Grid row-->
-
-    <!-- Copyright -->
-    <div class="text-center p-3">
-        Copyright © 2021 GAMEET - Tous droits réservés.
-        <br>
-        Toutes les marques commerciales, logos, images, supports et produits cités appartiennent à leurs propriétaires respectifs.
-    </div>
-    <!-- Copyright -->
-
-</footer>
+<!-- Copyright -->
+<div class="row copyright">
+	<div class="col-copyright">
+		Copyright © 2021 GAMEET - Tous droits réservés.
+		
+	</div>
+</div>
+<!-- Copyright --></footer>
