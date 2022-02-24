@@ -5,16 +5,20 @@ namespace App\DataFixtures;
 use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Users;
+use Faker;
+use Factory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+
 
 class UserFixtures extends Fixture
 { 
-
     const DATA = [
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'nickname' => "Geekeur7",
+            'username' => "Geekeur7",
             'email' => "geekeur7@game.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -22,7 +26,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'nickname' => "Pikachu59",
+            'username' => "Pikachu59",
             'email' => "pikachu@bep.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -30,7 +34,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'nickname' => "Badass",
+            'username' => "Badass",
             'email' => "badass@gmail.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -38,7 +42,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'nickname' => "darklight",
+            'username' => "darklight",
             'email' => "darklight@light.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -46,7 +50,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'nickname' => "Queen",
+            'username' => "Queen",
             'email' => "queen@outlook.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -54,7 +58,7 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'nickname' => "CobraX",
+            'username' => "CobraX",
             'email' => "cobra@snake.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
@@ -62,54 +66,43 @@ class UserFixtures extends Fixture
         [
             'firstname' => "John",
             'lastname' => "DOE",
-            'nickname' => "ninjaboy",
+            'username' => "ninjaboy",
             'email' => "ninjaboy@gun.com",
             'password' => "123456",
             'roles' => ["ROLE_USER"],
         ],
     ];
 
-    /**
-     * Password encode interface
-     * 
-     * @var UserPasswordEncoderInterface
-     */
     private $encoder;
-
-    function __construct(UserPasswordEncoderInterface $encoder)
+    public function __construct(UserPasswordEncoderInterface $encoder)
     {
-        $this->encoder = $encoder;
+        $this->encoder =$encoder;
     }
-
-
-    public function load(ObjectManager $manager): void
+    public function load(ObjectManager $manager)
     {
-        foreach (self::DATA as $item)
-        {
-            $user = new User;
-
-            $hashed = $this->encoder->encodePassword($user, $item['password']);
-
-            $user->setNickname( $item['nickname'] );
-            $user->setFirstname( $item['firstname'] );
-            $user->setLastname( $item['lastname'] );
-            $user->setEmail( $item['email'] );
-            $user->setPassword( $hashed );
-            $user->setRoles( $item['roles'] );
-            $user->setBirthdate( new \DateTime() );
-      
-            // setReference
-
-
-            $manager->persist($user);
-        }
+        $faker = Faker\Factory::create('fr_FR');
+       
+       
         
+                for($nbUsers = 1; $nbUsers <10 ; $nbUsers++);
+            $user = new User();
+            $user->setEmail($faker->email);
+            if($nbUsers ===1)
+               $user->setRoles(['ROLE_ADMIN']);
+            else 
+                 $user->setRoles(['ROLE_USER']);
 
-        $manager->flush();
+          $user->setPassword($this->encoder->encodePassword($user,
+          'azerty'));
+          $user->setLastname($faker->lastName);
+          $user->setFirstName($faker->firstName);
+          $user->setBirthdate( new \DateTime() );
+          
+          $user->setIsVerified($faker->numberBetween());
+          
+          
+             $manager->persist($user);
+
+             $manager->flush();
     }
-
-
-    // getOrders () {
-        //return 1;
-    //}
 }

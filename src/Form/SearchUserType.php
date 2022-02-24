@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SearchUserType extends AbstractType
 {
@@ -19,6 +20,11 @@ class SearchUserType extends AbstractType
             'attr' => [
                 'placeholder' => 'Rechercher un joueur',
             ],
+            'constraints'=> [
+                new NotBlank([
+                    'message' => 'Please enter a player',
+                ]),
+            ]
         ])
             
             

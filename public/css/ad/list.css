@@ -1,5 +1,8 @@
 h1, p, .card, a {
     color: #DEFFF2;
+    font-size: 15px;
+    
+
 }
 
 input[type="search"] {
@@ -13,6 +16,8 @@ input[type="search"] {
 
 .card {
     background-color: #000009;
+    
+  
 }
 
 hr {
@@ -25,11 +30,18 @@ hr {
 .card-text {
     margin-bottom: 10px;
     width: 400px;
+    
 }
 
+header{
+
+    margin:100px;
+    height:50vh;
+    
+}
 p, a {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 15px;
 }
 
 .text-space {
@@ -40,4 +52,15 @@ p, a {
 a:hover {
   color: #0FF4C6;
   transform: scaleX(1.02);
+}
+
+img{
+
+    width:600px;
+    margin:auto;
+}
+
+footer{
+
+    margin:20%;
 }

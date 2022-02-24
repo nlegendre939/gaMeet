@@ -9,46 +9,55 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
+
+
 /**
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
+
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
-
+   
+    
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
+
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
+
     #[ORM\Column(type: 'string')]
     private $password;
 
+    
+ 
+
     #[ORM\Column(type: 'string', length: 40)]
     private $firstname;
-
+    
+     
     #[ORM\Column(type: 'string', length: 40)]
     private $lastname;
 
-    #[ORM\Column(type: 'date')]
+ 
+     
+     #[ORM\Column(type: 'date')]
     private $birthdate;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+   
     private $isVerified = false;
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $activation_token;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $nickname;
+   
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $reset_token;
@@ -141,8 +150,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->password = null;
     }
+    
+    
 
-    public function getFirstname(): ?string
+     public function getFirstname(): string
     {
         return $this->firstname;
     }
@@ -154,7 +165,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getLastname(): ?string
+    public function getLastname(): string
     {
         return $this->lastname;
     }
@@ -166,12 +177,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getBirthdate(): ?\DateTimeInterface
+    public function getBirthdate(): string
     {
         return $this->birthdate;
     }
 
-    public function setBirthdate(\DateTimeInterface $birthdate): self
+    public function setBirthdate( $birthdate)
     {
         $this->birthdate = $birthdate;
 
@@ -190,7 +201,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getActivationToken(): ?string
+    public function getActivationToken(): string
     {
         return $this->activation_token;
     }
@@ -202,17 +213,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getNickname(): ?string
-    {
-        return $this->nickname;
-    }
-
-    public function setNickname(string $nickname): self
-    {
-        $this->nickname = $nickname;
-
-        return $this;
-    }
 
     public function getResetToken(): ?string
     {

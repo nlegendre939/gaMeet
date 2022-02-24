@@ -26,10 +26,17 @@ class HotnewType extends AbstractType
                     'placeholder' => 'Entrez le nom de l\'actualité'
                 ],
                 'constraints' => [
-                    new NotBlank()
+                    new NotBlank(),
+                    new Length ([
+                    'min' => 10,
+                    'max' => 250,
+                    'minMessage' => 'Le contenu doit contenir au minimum {{ limit }} caractères',
+                    'minMessage' => 'La contenu doit contenir au minimum {{ limit }} caractères',
+                ])
+
                 ]
-            ])
-            // ->add('slug')
+                ])
+
             ->add('content', TextareaType::class, [
                 'label' => 'Contenu',
                 'attr' => [

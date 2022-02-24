@@ -24,6 +24,8 @@
             <p class="card-text">{{ hotnew.content }}</p>
             <p>Créé le {{ hotnew.createAt|date('d/m/Y à h\\hi') }}</p>
             <p class="card-text">Ajouté par {{ hotnew.user.nickname }}</p>
+            <p>Supprimé le {{ hotnew.createAt|date('d/m/Y à h\\hi') }}</p>
+            <p class="card-text">Supprimé par {{ hotnew.user.nickname }}</p>
         </div>
     </article>
 </div>

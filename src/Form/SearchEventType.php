@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SearchEventType extends AbstractType
 {
@@ -18,6 +19,10 @@ class SearchEventType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Rechercher un événement',
                 ],
+                'constraints'=>
+                    new NotBlank([
+                        'message' => 'Please enter a letter',
+                    ]),
             ])
             ->add('submit', SubmitType::class, [
                 'label' => '<i class="fas fa-search"></i>',

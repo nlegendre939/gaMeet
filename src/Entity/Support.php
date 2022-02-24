@@ -6,15 +6,24 @@ use App\Repository\SupportRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SupportRepository::class)]
 class Support
 {
+            /* * 
+ * @var string|null
+ * @Assert\NotBlank()
+ */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
 
+            /* * 
+ * @var string|null
+ * @Assert\NotBlank()
+ */
     #[ORM\Column(type: 'string', length: 45)]
     private $name;
 

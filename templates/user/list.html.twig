@@ -8,10 +8,11 @@
 {% endblock %}
 
 {% block body %}
-
+    
     <h1>Rechercher un joueur</h1><br>
 
-    <div class="example-wrapper">
+    <div class="example-wrapper"></div>
+    
         <p>Recherche un joueur par son pseudo, ou filtre par le jeu et le support.</p>
         
         <p>Accède à son Profil Joueur et voir ce qu'il a publié.</p>
@@ -22,16 +23,25 @@
 
     {{ form_start(searchForm) }}
 
-    <div class="row d-flex justify-content-left">
-        <div class="col-2">
+    <div class="d-flex justify-content-center gap-5">
+        <div class="text-center">
             {{ form_end(searchForm) }}
- 
-            Listes des derniers joueurs inscrits:
 
-            <div class="example-wrapper">
-                Pikachuu85<br>
-                Queenn59<br>
-                CobraX
+
+
+           <br>
+           
+        <div class="example-wrapper">
+            Listes des derniers joueurs inscrits:
+                    <div class="images">
+                   <img src="images\img1.jpeg" class="m1" alt="img1">
+                     <img src="images\img2.jpeg" class="m2" alt="img2">
+                     <img src="images\img3.jpeg"  class="m3"alt="img3">
+                     <img src="images\img4.jpeg"  class="m4"   alt=" img4">
+                      </div>
+                     
+             </div>
+              
             </div>
         </div>
     </div>

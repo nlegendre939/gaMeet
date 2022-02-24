@@ -7,20 +7,27 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: TeamRepository::class)]
 class Team
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
 
+
     #[ORM\Column(type: 'string', length: 45)]
     private $name;
 
+
     #[ORM\Column(type: 'string', length: 45)]
     private $lead;
-
+     
+    
+   
+        
     #[ORM\Column(type: 'text')]
     private $description;
 

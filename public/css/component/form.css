@@ -49,3 +49,7 @@ input[type="file"] {
 .button:hover {
     transform: scaleX(1.02);
 }
+
+p{
+    color:#0FF4C6;
+}

@@ -87,4 +87,21 @@ class HotnewController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+
+
+    #[Route("/hotnew/{id}/delete",name:"hotnew_delete")]
+       public function delete(Hotnew $hotnew): Response
+
+       {
+            $em = $this->getDoctrine()->getManager();
+            $em ->remove($hotnew);
+            $em->flush();
+
+            $this->addFlash('notice', 'Votre actualité à été suprimée');
+
+            return $this->redirectToRoute(route:"hotnew_show");
+                
+            
+       }
 }

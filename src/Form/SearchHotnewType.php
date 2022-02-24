@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SearchHotnewType extends AbstractType
 {
@@ -18,6 +19,10 @@ class SearchHotnewType extends AbstractType
             'attr' => [
                 'placeholder' => 'Rechercher une annonce',
             ],
+            'constraints'=>
+                new NotBlank([
+                    'message' => 'Please enter a ad',
+                ]),
         ])
         ->add('submit', SubmitType::class, [
             'label' => '<i class="fas fa-search"></i>',

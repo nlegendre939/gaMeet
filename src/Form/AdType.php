@@ -6,14 +6,14 @@ use App\Entity\Ad;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Length;
 
 class AdType extends AbstractType
 {
@@ -24,26 +24,36 @@ class AdType extends AbstractType
                 'required' => true,
                 'label' => 'Nom de l\'annonce',
                 'attr' => [
-                    'placeholder' => 'Entrez le nom de l\'annonce'
-                ],
-                'constraints' => [
-                    new NotBlank()
-                ]
+                    'placeholder' => 'Entrez le nom de l\'annonce'],
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Please enter a name of ad',
+                        ]),
+                        new Length([
+                            'min' => 4,
+                           
+                        ]),
+                    ],
+                
+                
             ])
             ->add('description', TextareaType::class, [
                 'attr' => [
                     'rows' => 5,
                     'placeholder' => 'Entrez la description de l\'annonce'
                 ],
-                'constraints' => [
-                    new NotBlank(),
-                    new Length([
-                        'min' => 10,
-                        'max' => 1500,
-                        'minMessage' => 'La description doit contenir au minimum {{ limit }} caractères',
-                        'minMessage' => 'La description doit contenir au minimum {{ limit }} caractères',
-                    ])
-                ]
+
+                 'constraints' => [
+                        new NotBlank([
+                            'message' => 'Please enter a description',
+                        ]),
+                        new Length([
+                            'min' => 10,
+                            'max' => 1500,
+                           
+                        ]),
+                    ],
+                
             ])
             ->add('picture', FileType::class, [
                 'label' => 'Importer une image',

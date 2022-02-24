@@ -8,23 +8,29 @@ use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\HotnewRepository;
 
+
 #[ORM\Entity(repositoryClass: HotnewRepository::class)]
 class Hotnew
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
-
+ 
     #[ORM\Column(type: 'string', length: 250)]
     private $title;
+
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $slug;
 
     #[ORM\Column(type: 'text')]
     private $content;
-
+     /**
+     * @Assert\DateTime
+     * @var string A "Y-m-d H:i:s" formatted value
+     */
     #[ORM\Column(type: 'datetime')]
     private $createAt;
 

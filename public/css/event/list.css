@@ -1,5 +1,6 @@
 h1, p, .card, a {
     color: #DEFFF2;
+    font-size: 15px;
 }
 
 input[type="search"] {
@@ -28,8 +29,16 @@ hr {
 
 p, a {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 15px;
 }
+
+header{
+    
+
+        margin:100px;
+        height:50vh;
+        
+    }
 
 .text-space {
     padding-top: 20px;
@@ -62,4 +71,15 @@ a:hover {
 }
 .event-status.green{
     background-color: #27ae60;
+}
+
+
+img{
+
+    width:50%;
+    margin:auto;
+}
+footer{
+
+    margin:15%;
 }

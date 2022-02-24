@@ -85,5 +85,27 @@ class EventController extends AbstractController
         return $this->render('event/form.html.twig', [
             'form' => $form->createView()
         ]);
+
+    
+        
     }
+      
+       #[Route("/event/{id}/delete",name:"event_delete")]
+       public function delete(Event $event): Response
+
+       {
+            $em = $this->getDoctrine()->getManager();
+            $em ->remove($event);
+            $em->flush();
+
+            $this->addFlash('notice', 'Votre événement à été suprimée');
+
+            return $this->redirectToRoute(route:"event_show");
+                
+            
+       }
+
+       
+
+    
 }

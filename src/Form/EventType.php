@@ -5,13 +5,15 @@ namespace App\Form;
 use App\Entity\Event;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\NotBlank;
+
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Lenght;
 
 class EventType extends AbstractType
 {
@@ -25,8 +27,17 @@ class EventType extends AbstractType
                     'placeholder' => 'Entrez le nom de l\'événement'
                 ],
                 'constraints' => [
-                    new NotBlank()
+                    new NotBlank(),
+                    new Length ([
+                    'min' => 10,
+                    'max' => 250,
+                    'minMessage' => 'Le contenu doit contenir au minimum {{ limit }} caractères',
+                    'minMessage' => 'La contenu doit contenir au minimum {{ limit }} caractères',
+                ])
+
                 ]
+
+                
             ])
             ->add('picture', FileType::class, [
                 'label' => 'Importer une image',
@@ -37,8 +48,16 @@ class EventType extends AbstractType
                     'placeholder' => 'Entrez la description de l\'événement'
                 ],
                 'constraints' => [
-                    new NotBlank()
+                    new NotBlank(),
+                    new Length ([
+                    'min' => 10,
+                    'max' => 1500,
+                    'minMessage' => 'Le contenu doit contenir au minimum {{ limit }} caractères',
+                    'minMessage' => 'La contenu doit contenir au minimum {{ limit }} caractères',
+                ])
+
                 ]
+                
             ])
             ->add('start_at', DateTimeType::class, [
                 'label' => 'Date de début',

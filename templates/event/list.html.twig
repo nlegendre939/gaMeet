@@ -72,7 +72,8 @@
                     </div>
                 </article>
                 <div>
-                    <a href="{{ path('event_show', {id: event.id}) }}">En savoir plus</a>
+                    <a href="{{ path('event_show', {"id": event.id}) }}">En savoir plus</a>
+                    <a href="{{path('event_show_delete',{"id": event.id}) }}"class="btn btn-sm btn-outline-secondary">Supprimer</a>
                 </div>
             {% endfor %}
         </div>
