@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/components/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user/list.css') }}">
+{% endblock %}
+<div class="example-wrapper">
+   
+
+
+    <h1>Rechercher une équipe</h1><br>
+
+    <div class="example-wrapper"></div>
+    
+        <p>Recherche une équipe par son pseudo, ou filtre par le jeu et le support.</p>
+        
+        <p>Accède au Profil Equipe et voir ce qu'elle à publié.</p>
+
+        <p>Pour entrer en contact avec l'équipe, tu dois au préalable t'inscrire 
+            ou te connecter sur Gameet.</p>
+    </div> 
+
+    {{ form_start(searchForm) }}
+
+    <div class="d-flex justify-content-center gap-5">
+        <div class="text-center">
+            {{ form_end(searchForm) }}
+
+
+
+           <br>
+           
+        <div class="example-wrapper">
+            Listes des derniers équipes inscrits:
+                    <div class="images">
+                   <img src="images\team1.jpeg" class="t1" alt="img1">
+                     <img src="images\team2.jpeg" class="t2" alt="img2">
+                     <img src="images\team3.jpeg"  class="t3"   alt=" img3">
+                     <img src="images\team5.jpeg"  class="t5"   alt=" img5">
+                      </div>
+                     
+             </div>
+              
+            </div>
+        </div>
+    </div>
+{% endblock %}

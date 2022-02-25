@@ -1,0 +1,188 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Gameet 
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/main/index.css') }}">
+    
+{% endblock %}
+
+
+
+
+{% block mainClasses %}{% endblock %}
+
+{% block body %}
+    <div>
+        <div>
+            <h1 class="text-center">Bienvenue sur Gameet, n'ayez pas peur de jouer.</h1>
+            <h2 class="text-center">Rejoignez nous !</h2>
+           
+            </a>
+        </div>
+
+
+        <br>
+        <div>
+            <div class="d-flex justify-content-center">
+                <div class="text-center">
+                  <div class="slider">
+               <div class="images">
+                <input type="radio" name="slide" id="img1">
+                <input type="radio" name="slide" id="img2">
+                <input type="radio" name="slide" id="img3">
+                <img src="images\imgesports.jpeg" class="m1" alt="img1">
+                <img src="images\imgjeu.jpeg"  class="m2"alt="img2">
+                <img src="images\imggame.jpeg"  class="m3"   alt=" img3">
+            </div>
+                <div class="dots">
+                    <label for="img1"></label>
+                    <label for="img2"></label>
+                  <label for="img3"></label>
+                </div>
+        </div>
+           
+        </div>
+
+    
+                
+
+        
+    </div>
+</div>
+{% for user in users %}
+  
+{% endfor %}
+</div>
+            
+            <br>
+            
+            <div class="example-wrapper">
+            <p>Derniers Joueurs inscrits:</p>
+           
+              <div class="ima">
+              
+                    <img src="images\img2.jpeg"  class="m2"alt="im2">
+                    <img src="images\img3.jpeg"  class="m3"   alt=" im3">
+                    <img src="images\img1.jpeg"  class="m2"alt="im2">
+                    <img src="images\img4.jpeg"  class="m3"   alt=" im3">
+                     </div>
+                  
+               
+            </div>
+
+        
+
+
+
+                {% for team in teams %}
+                <div>
+                    <h2 class="card-title">{{ ad.name }}</h2>
+                    <p class="card-text">{{ ad.description|slice(0, 80) }} ...</p>
+                    <p>Ajouté par {{ ad.user.nickname }}</p> à h\\hi'</p>
+                </div>
+            {% endfor %}
+            </div>
+    
+            <br>
+            
+            
+            <p>Dernières Equipes inscrites:</p>
+            
+                
+                     
+                   <div class="ima">
+                    <img src="images\team1.jpeg" class="t1" alt="image équipe fantôme">
+                    <img src="images\team2.jpeg"  class="t2"alt="image équipe dragon">
+                    <img src="images\team3.jpeg"  class="t3"   alt=" image  équipe aigle ">
+                    <img src="images\team4.jpeg" class="t4" alt="image équipe bouffon">
+                    <img src="images\team5.jpeg"  class="t5"alt="image équipe de joueurs">
+          
+                     </div>
+                  
+            </div>
+               
+            </div>
+            
+            {% for ad in ads %}
+            <div>
+                <h2 class="card-title">{{ ad.name }}</h2>
+                <p class="card-text">{{ ad.description|slice(0, 80) }} ...</p>
+                <p>Ajouté par {{ ad.user.nickname }}</p> à h\\hi'</p>
+            </div>
+        {% endfor %}
+       
+                  
+        <p>Dernières annonces:</p>
+    
+    <div class="ima">
+
+    <img src="images\ad1.jpeg" class="ad1" alt="image vente de jeu">
+    <img src="images\ad2.jpeg" class="ad2" alt="image vente d'une xbox">
+    <img src="images\ad3.jpeg" class="ad3" alt="image vente d'un  ">
+    <img src="images\ad4.jpeg" class="ad4" alt="image vente de 2 manette de playstation">
+   
+   </div>
+    
+
+
+    <br>
+ 
+
+
+                {% for event in events %}
+          
+                
+                    <div>
+                        <h2 class="card-title">{{ event.name }}</h2>
+                        <p>Commence le : {{ event.startAt|date('d/m/Y à h\\hi') }}</p>
+                        <p class="card-text">{{ event.description|slice(0, 80) }} ...</p>
+                        <p>Fini le : {{ event.endAt|date('d/m/Y à h\\hi') }}</p>
+                    </div>
+                  
+                   
+
+                
+                {% endfor %}
+
+                <p>Derniers Evénements:</p>
+
+                <div class="ima">
+                    <img src="images\event1.jpeg" class="ev1" alt="image évenements mariokart">
+                 
+                    <img src="images\event2.jpeg"  class="ev2"alt="image événements joueurs">
+
+                     <img src="images\event3.jpeg"  class="ev3"   alt=" image événements paris week game ">
+                    
+          
+                     </div>
+        
+
+      
+                
+                {% for hotnew in hotnews %}
+               
+              
+                        <h2 class="card-title">{{ hotnew.title }}</h2>
+                        <p>Publié le {{ hotnew.publishAt|date('d/m/Y à h\\hi') }}</p>
+                        <p class="card-text">{{ hotnew.content }}</p>
+                        <p>Créé le {{ hotnew.createAt|date('d/m/Y à h\\hi') }}</p>
+                        <p class="card-text">Ajouté par {{ hotnew.user.nickname }}</p>
+                    </div>
+                {% endfor %}
+                <p>Dernières actualités</p>
+                
+                
+                               
+                    <div class="ima">
+
+                <img src="images\imgnintendo.jpeg" class="a1" alt="ima1"><br>
+                Nouvelle nintendo switch Oled!!
+                <br>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

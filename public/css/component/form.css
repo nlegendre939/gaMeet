@@ -1,0 +1,55 @@
+div{
+    margin: 10px;
+    color : #DEFFF2;
+}
+
+input[type="file"], input[type=date] {
+    cursor : pointer;
+}
+
+input[type="file"] {
+    width: 500px;
+}
+
+.container-md {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+form input, form textarea {
+font-size: 1.4rem;
+width: 300px;
+}
+
+ form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    resize: none;
+}
+
+input[type="file"], input[type=date] {
+    cursor : pointer;
+}
+
+input[type="file"] {
+    width: 500px;
+}
+
+.button{
+    color: #000009;
+    background-color: #DEFFF2;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+}
+
+.button:hover {
+    transform: scaleX(1.02);
+}
+
+p{
+    color:#0FF4C6;
+}

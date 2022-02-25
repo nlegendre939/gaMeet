@@ -1,0 +1,77 @@
+h1, p, .card, a {
+    color: #DEFFF2;
+    font-size: 15px;
+}
+
+input[type="search"] {
+    width: 300px;
+}
+
+.border {
+    width: 100vh;
+    border: 1px solid #D68FD6!important;
+}
+
+.card {
+    background-color: #000009;
+}
+
+hr {
+    color: #D68FD6;
+    border: 1px solid #D68FD6;
+    opacity: 1;
+}
+
+.card-text {
+    margin-bottom: 10px;
+    width: 400px;
+}
+
+p, a {
+    margin: 0;
+    font-size: 15px;
+}
+
+header{
+    
+
+        margin:100px;
+        height:50vh;
+        
+    }
+
+.text-space {
+    padding-top: 20px;
+    display: block;
+}
+
+a:hover {
+    color: #0FF4C6;
+    transform: scaleX(1.02);
+}
+
+.card .card-body{
+    position: relative;
+}
+
+.card .card-body .hotnew.-status{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+
+
+
+img{
+
+    width:50%;
+    margin:auto;
+}
+footer{
+
+    margin:15%;
+}
