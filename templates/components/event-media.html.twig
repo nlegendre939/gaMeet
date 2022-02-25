@@ -1,5 +1,0 @@
-{% if event.picture matches '{^(http|https)://}' %}
-    <img src="{{ event.picture }}" alt="{{ event.name }}">
-{% else %}
-    <img src="{{ asset('data/' ~ event.picture) }}" alt="{{ event.name }}">
-{% endif %}
